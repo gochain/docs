@@ -2,7 +2,7 @@ version: "3"
 services:
   node:
     container_name: node
-    image: gochain/gochain:${TAG:-latest}
+    image: gochain/gochain:${GOCHAIN_TAG:-latest}
     ports:
       - "30303:30303"
       - "30303:30303/udp"
@@ -10,7 +10,7 @@ services:
       - "8125:8125/udp"
     volumes:
       - .:/gochain
-    command: gochain --cache ${CACHE:-4096} --rpc --mine --unlock ${ACCT:?err} --password /gochain/password.txt
+    command: gochain --datadir /gochain/node --cache ${GOCHAIN_CACHE} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt --testnet
   netintel:
     container_name: netintel
     image: gochain/net-intelligence-api:latest
