@@ -1,0 +1,26 @@
+version: "3"
+services:
+  node:
+    container_name: node
+    image: gochain/gochain:${GOCHAIN_TAG:-latest}
+    ports:
+      - "30303:30303"
+      - "30303:30303/udp"
+      # dd-agent
+      - "8125:8125/udp"
+    volumes:
+      - .:/gochain
+    command: gochain --datadir /gochain/node --cache ${GOCHAIN_CACHE} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt --testnet
+  netintel:
+    container_name: netintel
+    image: gochain/net-intelligence-api:latest
+    depends_on:
+      - node
+    network_mode: "service:node"
+    volumes:
+      - ./app.json:/home/netintel/app.json
+  watchtower:
+    container_name: watchtower
+    image: v2tec/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

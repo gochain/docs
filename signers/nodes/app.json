@@ -1,0 +1,23 @@
+[
+  {
+    "name"              : "node-app",
+    "script"            : "app.js",
+    "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+    "merge_logs"        : false,
+    "watch"             : false,
+    "max_restarts"      : 10,
+    "exec_interpreter"  : "node",
+    "exec_mode"         : "fork_mode",
+    "env":
+    {
+      "NODE_ENV"        : "test",
+      "RPC_HOST"        : "localhost",
+      "RPC_PORT"        : "8545",
+      "INSTANCE_NAME"   : "YOUR_NODE_NAME",
+      "CONTACT_DETAILS" : "",
+      "WS_SERVER"       : "http://159.65.228.180",
+      "WS_SECRET"       : "YOUR_SECRET",
+      "VERBOSITY"       : 1
+    }
+  }
+]
