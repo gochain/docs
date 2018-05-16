@@ -1,6 +1,3 @@
-[Node]
-DataDir = "/gochain/node"
-
 [Node.P2P]
 StaticNodes = [
   "enode://02c2d10444a9aea86ed17674bb1d5b9d1c7bc94f89b74e245b6d17ed4a8eb5238b799df1371430be5fa0cdde48370501f52984f63c1be3cbae7521ea4bd09da4@138.68.1.11:30303",

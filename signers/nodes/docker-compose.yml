@@ -8,7 +8,7 @@ services:
       - "30303:30303/udp"
     volumes:
       - .:/gochain
-    command: gochain --testnet --config /gochain/config.toml --cache ${GOCHAIN_CACHE} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt
+    command: gochain --testnet --config /gochain/config.toml --datadir /gochain/node --cache ${GOCHAIN_CACHE} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt
   netintel:
     container_name: netintel
     image: gochain/net-intelligence-api:latest
