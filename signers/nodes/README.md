@@ -1,8 +1,6 @@
-# For Authorized Signers
+# Running an Authorized Signer Node
 
-## Running a Node
-
-### Prerequisites
+## Prerequisites
 
 Install `docker` and `docker-compose`.
 
@@ -30,7 +28,7 @@ docker-compose --version
 ```
 </details>
 
-### Initial Configuration
+## Initial Configuration
 
 1. Put your password in `password.txt` in same folder with `docker-compose.yml`
 2. Create an account for reward activities.
@@ -57,7 +55,7 @@ docker logs -f node
 
 9. Contact the GoChain team with your account address to be added to the list of signers
 
-### Common Commands
+## Common Commands
 
 1. `docker-compose up -d` - start or repair all containers.
 1. `docker logs -f --tail 100 node` - follow the `node` container's logs.
@@ -65,9 +63,9 @@ docker logs -f node
 3. `docker-compose down && docker-compose up -d` - full cycle restart.
 4. `docker-compose restart netintel` - restart the `netintel` container.
 
-### Common Problems
+## Common Problems
 
-1. _`netintel` fails to start_
+### `netintel` fails to start
 
 If you get an error starting `netintel` that looks like this:
 ```
@@ -77,6 +75,6 @@ ERROR: for netintel  Cannot restart container d1eaa396240a0687fc4d7e301a90e512a9
 ```
 Usually the `node` container has crashed (or failed to start at all), and `docker logs node` will provide more insight about the real problem.
 
-2. _Netstats shows node gray and inactive, but node is live_
+### Netstats shows node gray and inactive, but node is live
 
 This generally just requires restarting the `netintel` container with `docker-compose restart netintel` to refresh the connection to the `node` container. If that does not work, it may require a full cycle restart, `docker-compose down && docker-compose up -d`.
