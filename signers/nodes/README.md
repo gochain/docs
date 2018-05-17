@@ -65,7 +65,7 @@ docker logs -f node
 
 ### Common Problems
 
-1. Netintel fails to start
+1. _`netintel` fails to start_
 
 If you get an error starting `netintel` that looks like this:
 ```
@@ -75,6 +75,6 @@ ERROR: for netintel  Cannot restart container d1eaa396240a0687fc4d7e301a90e512a9
 ```
 Usually the `node` container has crashed (or failed to start at all), and `docker logs node` will provide more insight about the real problem.
 
-2. Netstats shows node gray and inactive, but node is live
+2. _Netstats shows node gray and inactive, but node is live_
 
 This generally just requires restarting the `netintel` container with `docker-compose restart netintel` to refresh the connection to the `node` container. If that does not work, it may require a full cycle restart, `docker-compose down && docker-compose up -d`.
