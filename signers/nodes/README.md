@@ -9,7 +9,8 @@ Install `docker` and `docker-compose`.
 * Docker > 18.0 ([install](https://docs.docker.com/install/))
 * Docker-compose ([install](https://docs.docker.com/compose/install/))
 
-#### Simple Install Instructions
+<details>
+  <summary>Simple Install Instructions</summary>
 
 Docker:
 
@@ -27,6 +28,7 @@ curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compos
 chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
+</details>
 
 ### Initial Configuration
 
