@@ -39,7 +39,7 @@ docker run --rm -v $PWD:/root gochain/gochain gochain --datadir /root/node --pas
 
 3. Backup the `node/keystore` directory you just created! If you lose it, you will lose all of your rewards!
 4. Copy `example.env` to `.env` file (make it default for `docker-compose`)
-5. Update `example.env` (replace `ADDRESS_YOU_GOT_ON_STEP_2` with the address from step 2)
+5. Update `.env` (replace `ADDRESS_YOU_GOT_ON_STEP_2` with the address from step 2)
 6. Update `app.json` (replace `YOUR_SECRET` with secret that you got from GoChain team and `YOUR_NODE_NAME` with name of your company)
 7. Launch `docker-compose`
 
