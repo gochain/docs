@@ -1,5 +1,9 @@
-# GoChain Documentation
+![GoChain Logo](color_logo_transparent.png)
 
-## Authorized Signers
+## GoChain Docs
+
+Official GoChain documentation.
+
+### Authorized Signers
 
 [Authorized Signer Documentation](signers)
