@@ -1,4 +1,4 @@
-![GoChain Logo](color_logo_transparent.png)
+![GoChain Logo](color_logo_transparent_100.png)
 
 ## GoChain Docs
 
