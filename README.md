@@ -1,2 +1,5 @@
-# docs
-Documentation repo
+# GoChain Documentation
+
+## Authorized Signers
+
+[Authorized Signer Documentation](signers)
