@@ -30,20 +30,8 @@ docker-compose --version
 
 ## Initial Configuration
 
-1. Put your password in `password.txt` in same folder with `docker-compose.yml`
-2. Create an account for reward activities.
-
-```sh
-docker run --rm -v $PWD:/root gochain/gochain gochain --datadir /root/node --password /root/password.txt account new
+A complete configuration looks like:
 ```
-
-3. Backup the `node/keystore` directory you just created! If you lose it, you will lose all of your rewards!
-4. Create a file `.env` (in the same folder with `docker-compose.yml`) with a line like `GOCHAIN_ACCT=0x12345` with the address from step 2.
-5. Optional: See `example.env` for other available `.env` variables.
-6. Copy and update `app.json` (replace `YOUR_SECRET` with secret that you got from GoChain team and `YOUR_NODE_NAME` with name of your company)
-7. Copy `config.toml` and `docker-compose.yml`. A complete configuration looks like:
-```
-|-app.json
 |-config.toml
 |-docker-compose.yml
 |-.env
@@ -51,13 +39,28 @@ docker run --rm -v $PWD:/root gochain/gochain gochain --datadir /root/node --pas
 |-password.txt
 ```
 
-8. Launch `docker-compose`
+1. Copy `config.toml` and `docker-compose.yml` into your folder.
+2. Create a file `password.txt` with your password.
+3. Create an account for reward activities. Note the logged address.
+
+```sh
+docker run --rm -v $PWD:/root gochain/gochain gochain --datadir /root/node --password /root/password.txt account new
+```
+
+4. **Backup the `node/keystore` directory you just created! If you lose it, you will lose all of your rewards!**
+5. Create a file `.env` to set the required variables: (see [`example.env`](example.env) for more details and optional variables)
+```
+GOCHAIN_ACCT=0x12345 # Use the address from step 2.
+NETSTATS_NAME="My Company Name"
+NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
+```
+6. Launch `docker-compose`
 
 ```sh
 docker-compose up -d
 ```
 
-9. Make sure that node works
+7. Make sure that node works
 
 ```sh
 docker logs -f node
