@@ -74,20 +74,4 @@ docker logs -f node
 1. `docker logs -f --tail 100 node` - follow the `node` container's logs.
 2. `docker-compose down` - stop and remove all containers.
 3. `docker-compose down && docker-compose up -d` - full cycle restart.
-4. `docker-compose restart netintel` - restart the `netintel` container.
-
-## Common Problems
-
-### `netintel` fails to start
-
-If you get an error starting `netintel` that looks like this:
-```
-Restarting netintel ... error
-
-ERROR: for netintel  Cannot restart container d1eaa396240a0687fc4d7e301a90e512a90222d87a8c3a9e8a63d2c6767a069e: No such container: 39314384abb83d137f50479b3fd8613e76e7f48d1a6ea57fb32f438d0738a6b4
-```
-Usually the `node` container has crashed (or failed to start at all), and `docker logs node` will provide more insight about the real problem.
-
-### Netstats shows node gray and inactive, but node is live
-
-This generally just requires restarting the `netintel` container with `docker-compose restart netintel` to refresh the connection to the `node` container. If that does not work, it may require a full cycle restart, `docker-compose down && docker-compose up -d`.
+4. `docker-compose restart node` - restart the `node` container.
