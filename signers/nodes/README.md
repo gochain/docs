@@ -1,5 +1,7 @@
 # Running an Authorized Signer Node
 
+This directory contains instructions for configuring and running an authorized signer node on either the GoChain `testnet` or `mainnet`.
+
 ## Prerequisites
 
 Install `docker` and `docker-compose`.
@@ -39,7 +41,7 @@ A complete configuration looks like:
 |-password.txt
 ```
 
-1. Copy `config.toml` and `docker-compose.yml` into your folder.
+1. Copy `config.toml` and `docker-compose.yml` into your folder from either the [`testnet`](testnet) or [`mainnet`](mainnet) directory.
 2. Create a file `password.txt` with your password.
 3. Create an account for reward activities. Note the logged address.
 
@@ -60,34 +62,19 @@ NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
 docker-compose up -d
 ```
 
-7. Make sure that node works
+7. Make sure that node works. Note the `enode` address logged on startup.
 
 ```sh
 docker logs -f node
 ```
 
-10. Contact the GoChain team with your account address to be added to the list of signers
+8. **Backup the `node/GoChain/nodekey` file!** - This determines your enode public key.
+9. Contact the GoChain team with your account address and enode to be added to the list of signers.
 
 ## Common Commands
 
-1. `docker-compose up -d` - start or repair all containers.
-1. `docker logs -f --tail 100 node` - follow the `node` container's logs.
-2. `docker-compose down` - stop and remove all containers.
-3. `docker-compose down && docker-compose up -d` - full cycle restart.
-4. `docker-compose restart netintel` - restart the `netintel` container.
-
-## Common Problems
-
-### `netintel` fails to start
-
-If you get an error starting `netintel` that looks like this:
-```
-Restarting netintel ... error
-
-ERROR: for netintel  Cannot restart container d1eaa396240a0687fc4d7e301a90e512a90222d87a8c3a9e8a63d2c6767a069e: No such container: 39314384abb83d137f50479b3fd8613e76e7f48d1a6ea57fb32f438d0738a6b4
-```
-Usually the `node` container has crashed (or failed to start at all), and `docker logs node` will provide more insight about the real problem.
-
-### Netstats shows node gray and inactive, but node is live
-
-This generally just requires restarting the `netintel` container with `docker-compose restart netintel` to refresh the connection to the `node` container. If that does not work, it may require a full cycle restart, `docker-compose down && docker-compose up -d`.
+- `docker-compose restart node` - restart the `node` container.
+- `docker-compose up -d` - start or repair all containers.
+- `docker logs -f --tail 100 node` - follow the `node` container's logs.
+- `docker-compose down` - stop and remove all containers.
+- `docker-compose down && docker-compose up -d` - full cycle restart.
