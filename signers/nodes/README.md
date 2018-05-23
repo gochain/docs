@@ -1,5 +1,7 @@
 # Running an Authorized Signer Node
 
+This directory contains instructions for configuring and running an authorized signer node on either the GoChain `testnet` or `mainnet`.
+
 ## Prerequisites
 
 Install `docker` and `docker-compose`.
@@ -39,7 +41,7 @@ A complete configuration looks like:
 |-password.txt
 ```
 
-1. Copy `config.toml` and `docker-compose.yml` into your folder.
+1. Copy `config.toml` and `docker-compose.yml` into your folder from either the [`testnet`](testnet) or [`mainnet`](mainnet) directory.
 2. Create a file `password.txt` with your password.
 3. Create an account for reward activities. Note the logged address.
 
@@ -60,18 +62,19 @@ NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
 docker-compose up -d
 ```
 
-7. Make sure that node works
+7. Make sure that node works. Note the `enode` address logged on startup.
 
 ```sh
 docker logs -f node
 ```
 
-10. Contact the GoChain team with your account address to be added to the list of signers
+8. **Backup the `node/GoChain/nodekey` file!** - This determines your enode public key.
+9. Contact the GoChain team with your account address and enode to be added to the list of signers.
 
 ## Common Commands
 
-1. `docker-compose up -d` - start or repair all containers.
-1. `docker logs -f --tail 100 node` - follow the `node` container's logs.
-2. `docker-compose down` - stop and remove all containers.
-3. `docker-compose down && docker-compose up -d` - full cycle restart.
-4. `docker-compose restart node` - restart the `node` container.
+- `docker-compose restart node` - restart the `node` container.
+- `docker-compose up -d` - start or repair all containers.
+- `docker logs -f --tail 100 node` - follow the `node` container's logs.
+- `docker-compose down` - stop and remove all containers.
+- `docker-compose down && docker-compose up -d` - full cycle restart.
