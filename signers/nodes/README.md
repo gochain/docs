@@ -32,6 +32,8 @@ docker-compose --version
 
 ## Initial Configuration
 
+\**Note: If you are moving from the testnet to the mainnet, it is best to start fresh in a new folder.*
+
 A complete configuration looks like:
 ```
 |-config.toml
