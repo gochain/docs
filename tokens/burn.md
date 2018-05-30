@@ -3,7 +3,7 @@
 Follow the steps below to swap your GOCX tokens on Ethereum to GO tokens on the GoChain MainNet.
 
 * Go to: https://www.myetherwallet.com/#contracts
-* Enter: `10xdeCeac4Cbb3E30A40091e7d73D0a16ddF88f1C6d1` for Contract Address
+* Enter: `0xdeCeac4Cbb3E30A40091e7d73D0a16ddF88f1C6d` for Contract Address
 * Paste below into “ABI / JSON Interface”:
   * `[{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"burn","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]`
 * In Read/Write Contract section:
