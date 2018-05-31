@@ -54,7 +54,7 @@ docker run --rm -v $PWD:/root gochain/gochain gochain --datadir /root/node --pas
 4. **Backup the `node/keystore` directory you just created! If you lose it, you will lose all of your rewards!**
 5. Create a file `.env` to set the required variables: (see [`example.env`](example.env) for more details and optional variables)
 ```
-GOCHAIN_ACCT=0x12345 # Use the address from step 2.
+GOCHAIN_ACCT=0x12345 # Use the address from step 3.
 NETSTATS_NAME="My Company Name"
 NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
 ```
