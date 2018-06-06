@@ -67,8 +67,13 @@ docker logs -f node
 
 ## Adding more Nodes
 
-Additional nodes can be run in the same manner. If they intend to sign and/or vote, and they were not included in the 
-genesis file, then they can be voted in via the console, using the `clique` api:
+Additional nodes can be run in the same manner. Nodes can be connected to one another by attaching to the console and executing
+`admin.addPeer(<enode>)`. For example: 
+```sh
+docker run --rm -it -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node attach
+> admin.addPeer('enode://dd72567042f67053e04ccaed6a0bb335a3694a19da44547bce9040e76c2adfcdf6c729181c3700d7de927bf1444d25c91359e3536eeb5a945b00d2efb5739c9a@159.65.169.181:30303')
+```
+If nodes intend to sign and/or vote, and they were not included in the genesis file, then they can be voted in via the console, using the `clique` api:
 ```sh
 docker run --rm -it -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node attach
 > clique
