@@ -2,6 +2,8 @@
 
 This directory contains instructions for configuring and running a GoChain node with `docker-compose` on either the `testnet` or `mainnet`.
 
+Instructions for running a custom private network are [here](custom).
+
 Instructions for running a *signing* node are [here](../signers/nodes).
 
 ## Prerequisites
@@ -56,8 +58,14 @@ docker logs -f node
 
 ## Common Commands
 
-- `docker-compose restart node` - restart the `node` container.
-- `docker-compose up -d` - start or repair all containers.
-- `docker logs -f --tail 100 node` - follow the `node` container's logs.
-- `docker-compose down` - stop and remove all containers.
-- `docker-compose down && docker-compose up -d` - full cycle restart.
+- Start: `docker-compose up -d`
+- Stop: `docker-compose down`
+- Follow Logs: `docker logs -f --tail 100 node`
+- Restart Container: `docker-compose restart node`
+- Restart All: `docker-compose down && docker-compose up -d`
+- Console Attach: `docker run --rm -it -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node attach`
+
+### Console Commands
+
+- Enode: `admin.nodeInfo.enode`
+

@@ -64,19 +64,16 @@ NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
 docker-compose up -d
 ```
 
-7. Make sure that node works. Note the `enode` address logged on startup.
+7. Make sure that node works. Note the `enode` address logged on startup. 
+(The `enode` can also be retrieved by attaching to the console and executing `admin.nodeInfo.enode`)
 
 ```sh
 docker logs -f node
 ```
 
 8. **Backup the `node/GoChain/nodekey` file!** - This determines your enode public key.
-9. Contact the GoChain team with your account address and enode to be added to the list of signers.
+9. Contact the GoChain team with your account address and enode (with IP address) to be added to the list of signers.
 
 ## Common Commands
 
-- `docker-compose restart node` - restart the `node` container.
-- `docker-compose up -d` - start or repair all containers.
-- `docker logs -f --tail 100 node` - follow the `node` container's logs.
-- `docker-compose down` - stop and remove all containers.
-- `docker-compose down && docker-compose up -d` - full cycle restart.
+Common commands [here](../../nodes/README.md#common-commands).
