@@ -30,6 +30,7 @@ You'll need a machine with the following specifications or greater:
 
 * 32GB RAM
 * CPU - typically, a 32GB machine will have enough CPU to handle it
+* SSD drives with at least 200GB of space
 * Network - any modern data center/cloud provider should have sufficient network bandwidth
 
 ## Testnet QA
