@@ -11,6 +11,11 @@ If you want to send GO tokens or interact with smart contracts on GoChain, this 
 * [GoChain Wallet](https://wallet.gochain.io)
 * [Block Explorer](https://explorer.gochain.io)
 
+You can also use existing Ethereum tools:
+
+* [How to use GoChain with MyEtherWallet or MyCrypto](https://medium.com/gochain/how-to-use-myetherwallet-with-gochain-e1c331d0dca2)
+* [How to use GoChain with MetaMask](https://medium.com/gochain/how-to-use-gochain-with-metamask-23a258ae39c5)
+
 ## Smart Contract / DApp Developers
 
 If you are developing smart contracts or dapps to deploy to GoChain, you'll find the information you need here.
