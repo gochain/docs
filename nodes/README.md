@@ -71,3 +71,5 @@ docker logs -f node
 - Balance: `eth.getBalance('0xabcd')`
 - Coinbase Balance (rewards): `eth.getBalance(eth.coinbase)` 
 - Send Transaction (transfer rewards): `eth.sendTransaction({from:eth.coinbase,to:'0xabcd',value:1000000000000000000})`
+
+More info on the console is available here: https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console
