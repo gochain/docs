@@ -68,4 +68,6 @@ docker logs -f node
 ### Console Commands
 
 - Enode: `admin.nodeInfo.enode`
-
+- Balance: `eth.getBalance('0xabcd')`
+- Coinbase Balance (rewards): `eth.getBalance(eth.coinbase)` 
+- Send Transaction (transfer rewards): `eth.sendTransaction({from:eth.coinbase,to:'0xabcd',value:1000000000000000000})`
