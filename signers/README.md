@@ -1,6 +1,7 @@
 # Signer Information Sheet
 
 ## What is a GoChain Signer?
+
 A GoChain signer is a company/entity that is given the privilege of signing blocks in the GoChain network based on our Proof of Reputation consensus. 
 
 ## What’s in it for a Signer?

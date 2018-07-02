@@ -21,6 +21,7 @@ You can also use existing Ethereum tools:
 If you are developing smart contracts or dapps to deploy to GoChain, you'll find the information you need here.
 
 * [How to deploy to GoChain](https://medium.com/gochain/how-to-deploy-a-smart-contract-to-gochain-40de78d4d85a)
+* [GoChain TestNet](testnet)
 
 ### Network RPC URLs
 
