@@ -1,4 +1,4 @@
-# Running an Node
+# Running a Node
 
 This directory contains instructions for configuring and running a GoChain node with `docker-compose` on either the `testnet` or `mainnet`.
 
