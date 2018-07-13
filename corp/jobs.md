@@ -1,6 +1,6 @@
 # GoChain Jobs
 
-Do you want to be a part of the blockchain revolution and work on a next generation blockchain project? Whether you’re an engineer,in business development, marketing, or some other way you think you could provide value, we’d love to hear from you!
+Do you want to be a part of the blockchain revolution and work on a next generation blockchain project? Whether you’re an engineer, in business development, marketing, or some other way you think you could provide value, we’d love to hear from you!
 
 GoChain is always looking for the best engineers and business leaders to help build and grow 
 the technology and the ecosystem. 
@@ -40,4 +40,4 @@ Do you like speaking at conferences and writing blog posts? Then have we got the
 
 ## Apply Now!
 
-Email jobs@gochain.io with why you think you’d be a good fit for GoChain, as well as a link to your LinkedIn profile.
+Email [jobs@gochain.io](mailto:jobs@gochain.io) with why you think you’d be a good fit for GoChain, as well as a link to your LinkedIn profile.
