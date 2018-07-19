@@ -53,7 +53,7 @@ cat password.txt
 6. Launch the interactive GoChain console on the machine you ssh'd into:
 
 ```sh
-sudo docker run --rm -it -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node attach
+sudo docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node attach
 ```
 
 7. Check the balance of the genesis account
