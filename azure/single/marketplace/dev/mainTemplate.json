@@ -1,0 +1,331 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string",
+      "metadata": {
+        "description": "String used as the name for the virtual machine"
+      },
+      "maxLength": 12
+    },
+    "authType": {
+      "type": "string",
+      "allowedValues": [
+        "password",
+        "sshPublicKey"
+      ],
+      "metadata": {
+        "description": "Authorization type for SSH access to VMs"
+      }
+    },
+    "adminUsername": {
+      "type": "string",
+      "defaultValue": "gochain",
+      "metadata": {
+        "description": "Administrator username of each deployed VM (alphanumeric characters only)"
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Administrator password for each deployed VM"
+      }
+    },
+    "adminSSHKey": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "SSH RSA public key file as a string"
+      }
+    },
+    "vmStoragePerformance": {
+      "type": "string",
+      "defaultValue": "Premium",
+      "allowedValues": [
+        "Standard",
+        "Premium"
+      ],
+      "metadata": {
+        "description": "Storage performance level for STRATO api virtual machines"
+      }
+    },
+    "vmSize": {
+      "type": "string",
+      "defaultValue": "Standard_DS3_v2",
+      "allowedValues": [
+        "Standard_D3_v2",
+        "Standard_D4_v2",
+        "Standard_DS3_v2",
+        "Standard_DS4_v2"
+      ],
+      "metadata": {
+        "description": "Size of the virtual machine used for STRATO api nodes"
+      }
+    },        
+    "networkId": {
+        "type": "string"            
+      },
+      "initialBalance": {
+        "type": "string",        
+        "defaultValue": "1000000000"
+      }
+  },
+  "variables": {
+    "apiVersionDeployments": "2016-09-01",
+    "apiVersionPublicIPAddresses": "2016-09-01",
+    "apiVersionAvailabilitySets": "2017-03-30",
+    "apiVersionNetworkSecurityGroups": "2016-09-01",
+    "apiVersionNetworkInterfaces": "2016-09-01",
+    "apiVersionVirtualMachines": "2017-03-30",
+    "apiVersionVirtualNetworks": "2016-09-01",
+    "apiVersionStorageAccounts": "2016-01-01",
+    "baseUrl": "https://gochain.blob.core.windows.net/gochain",
+    "nameInfix": "[toLower(substring(concat(parameters('vmName'), uniqueString(resourceGroup().id)), 0, 9))]",
+    "dnsName": "[if(equals(parameters('authType'), 'password'), concat(variables('nameInfix'),'p'), concat(variables('nameInfix'),'s'))]",
+    "gochainPort": 30303,
+    "gochainRPCPort": 8545,
+    "sshPort": 22,
+    "location": "westus",
+    "subnetName": "[uniqueString(concat(resourceGroup().id, concat(variables('nameInfix'), 'subnet')))]",
+    "subnetPrefix": "10.1.0.0/24",
+    "nsgName": "[concat(variables('nameInfix'), '-nsg')]",
+    "nicName": "[concat(variables('nameInfix'), '-nic')]",
+    "publicIpAddressName": "[concat(variables('nameInfix'), '-pip')]",
+    "subnetPropertiesArray": [
+      {
+        "name": "[variables('subnetName')]",
+        "properties": {
+          "addressPrefix": "[variables('subnetPrefix')]"
+        }
+      }
+    ],
+    "ubuntuImage": {
+      "publisher": "Canonical",
+      "offer": "UbuntuServer",
+      "sku": "16.04.0-LTS",
+      "version": "latest"
+    },
+    "vNet": {
+      "name": "[concat(variables('nameInfix'), '-vnet')]",
+      "addressSpacePrefix": "10.1.0.0/20"
+    },
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', variables('vNet').name)]",
+    "subnetRef": "[concat(variables('vnetID'),'/subnets/', variables('subnetName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "[variables('apiVersionPublicIPAddresses')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('publicIpAddressName')]",
+      "location": "[variables('location')]",
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic",
+        "dnsSettings": {
+          "domainNameLabel": "[variables('dnsName')]"
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersionNetworkInterfaces')]",
+      "type": "Microsoft.Network/networkInterfaces",
+      "name": "[variables('nicName')]",
+      "location": "[variables('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('vNet').name)]",
+        "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
+      ],
+      "properties": {
+        "ipConfigurations": [
+          {
+            "name": "ipconfig1",
+            "properties": {
+              "privateIPAllocationMethod": "Dynamic",
+              "subnet": {
+                "id": "[variables('subnetRef')]"
+              },
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
+              }
+            }
+          }
+        ],
+        "networkSecurityGroup": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersionNetworkSecurityGroups')]",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[variables('nsgName')]",
+      "location": "[variables('location')]",
+      "tags": {
+        "displayName": "Network Security Group"
+      },
+      "properties": {
+        "securityRules": [
+          {
+            "name": "allow-ssh",
+            "properties": {
+              "description": "Allow SSH",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[variables('sshPort')]",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "allow-gochain",
+            "properties": {
+              "description": "Allow public access to gochain",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[variables('gochainPort')]",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 102,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "allow-gochain-rpc",
+            "properties": {
+              "description": "Allow public access to gochain RPC",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "[variables('gochainRPCPort')]",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 103,
+              "direction": "Inbound"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersionVirtualNetworks')]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[variables('vNet').name]",
+      "location": "[variables('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[variables('vNet').addressSpacePrefix]"
+          ]
+        },
+        "subnets": "[variables('subnetPropertiesArray')]"
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersionDeployments')]",
+      "name": "vmLinkedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('vNet').name)]",
+        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('baseUrl'), '/nested/VM.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "authType": {
+            "value": "[parameters('authType')]"
+          },
+          "apiVersionVirtualMachines": {
+            "value": "[variables('apiVersionVirtualMachines')]"
+          },
+          "storagePerformance": {
+            "value": "[parameters('vmStoragePerformance')]"
+          },
+          "nicName": {
+            "value": "[variables('nicName')]"
+          },
+          "vmSize": {
+            "value": "[parameters('vmSize')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "adminSSHKey": {
+            "value": "[parameters('adminSSHKey')]"
+          },
+          "ubuntuImage": {
+            "value": "[variables('ubuntuImage')]"
+          },
+          "dnsName": {
+            "value": "[variables('dnsName')]"
+          },
+          "nameInfix": {
+            "value": "[variables('nameInfix')]"
+          },
+          "location": {
+            "value": "[variables('location')]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersionDeployments')]",
+      "name": "vmExtensionLinkedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "dependsOn": [
+        "vmLinkedTemplate"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(variables('baseUrl'), '/nested/VMExtension.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "authType": {
+            "value": "[parameters('authType')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "artifactsLocationURL": {
+            "value": "[variables('baseUrl')]"
+          },          
+          "networkId": {
+            "value": "[parameters('networkId')]"
+          },
+          "initialBalance": {
+            "value": "[parameters('initialBalance')]"
+          },          
+          "location": {
+            "value": "[variables('location')]"
+          },
+          "dnsName": {
+            "value": "[variables('dnsName')]"
+          },
+          "fqdn": {
+            "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', variables('publicIpAddressName')), variables('apiVersionPublicIPAddresses')).dnsSettings.fqdn]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "dnsName": {
+      "type": "string",
+      "value": "[reference(variables('publicIpAddressName')).dnsSettings.fqdn]"
+    } 
+  }
+}

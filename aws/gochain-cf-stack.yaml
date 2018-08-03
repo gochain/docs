@@ -1,0 +1,166 @@
+# AWS GoChain CloudFormation Stack
+
+AWSTemplateFormatVersion: "2010-09-09"
+Mappings: 
+  RegionMap: 
+    ap-northeast-1: 
+      image: "ami-48a45937"
+    ap-northeast-2:
+      image: "ami-f030989e"
+    ap-south-1:
+      image: "ami-41e9c52e"
+    ap-southeast-1:
+      image: "ami-81cefcfd"
+    ap-southeast-2:
+      image: "ami-963cecf4"
+    ca-central-1:
+      image: "ami-7e21a11a"
+    cn-north-1:
+      image: "ami-b117c9dc"
+    cn-northwest-1:
+      image: "ami-39b8ac5b"
+    eu-central-1:
+      image: "ami-c7e0c82c"
+    eu-west-1:
+      image: "ami-58d7e821"
+    eu-west-2:
+      image: "ami-5daa463a"
+    eu-west-3:
+      image: "ami-1960d164"
+    sa-east-1:
+      image: "ami-67fca30b"
+    us-east-1:
+      image: "ami-a4dc46db"
+    us-east-2:
+      image: "ami-6a003c0f"
+    us-gov-west-1:
+      image: "ami-0661f767"
+    us-west-1:
+      image: "ami-8d948ced"
+    us-west-2:
+      image: "ami-db710fa3"
+Parameters:
+  NetworkId:
+    Description: "Network ID"
+    Default: "6060"
+    Type: "String"
+  InitialBalance:
+    Description: "Initial Balance"
+    Default: "1000000000"
+    Type: "String"  
+  KeyName:
+    Description: "Key pair name"
+    Default: "gochain"
+    Type: "String"
+  InstanceType:
+    Type: String
+    Default: t2.micro
+    AllowedValues: 
+      - t2.micro
+      - m1.small
+      - m1.large
+    Description: Enter t2.micro, m1.small, or m1.large. Default is t2.micro.  
+  VolumeSize:
+    Description: "Instance volume size in GB"
+    Default: "20"
+    Type: "Number"
+  AvailabilityZone:
+    Description: "Availability zone"    
+    Type: AWS::EC2::AvailabilityZone::Name
+
+Resources:
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Gochain security group"
+      SecurityGroupIngress:
+        - CidrIp: "0.0.0.0/0"
+          IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+        - CidrIp: "0.0.0.0/0"
+          IpProtocol: tcp
+          FromPort: 30303
+          ToPort: 30303  
+        - CidrIp: "0.0.0.0/0"
+          IpProtocol: tcp
+          FromPort: 8545
+          ToPort: 8545        
+  SecurityGroupIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupName: !Ref SecurityGroup
+      SourceSecurityGroupName: !Ref SecurityGroup
+      IpProtocol: -1
+      FromPort: -1
+      ToPort: -1
+  Volume1:
+    Type: AWS::EC2::Volume
+    Properties:
+      Size: !Ref VolumeSize
+      VolumeType: "gp2"
+      AvailabilityZone: !Ref AvailabilityZone
+  Node1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      ImageId: !FindInMap [ RegionMap, !Ref 'AWS::Region', image ]
+      KeyName: !Ref KeyName
+      AvailabilityZone: !Ref AvailabilityZone
+      SecurityGroups:
+        - !Ref SecurityGroup
+      UserData:
+        "Fn::Base64":
+          "Fn::Join":
+            - "\n"
+            -
+              - "#!/bin/bash -xe"
+              - "export DEBIAN_FRONTEND=noninteractive"  
+              - "export HOMEDIR=/home/ubuntu/mount"
+              - "sleep 5"
+              - "sudo mkfs -t ext4 /dev/xvdh"
+              - "sudo mkdir $HOMEDIR"
+              - "sudo mount /dev/xvdh $HOMEDIR"              
+              - "cd $HOMEDIR"
+              - "sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common"
+              - "wget -qO- https://get.docker.com/ | sh"
+              - "sleep 5"
+              - "sudo curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose"
+              - "sudo chmod +x /usr/local/bin/docker-compose"
+              - !Sub "export NETWORK_ID=${NetworkId}"              
+              - !Sub "export INITIAL_BALANCE=${InitialBalance}"                            
+              - "printenv"
+              - "printf -v INITIAL_BALANCE_HEX \"%x\" \"$INITIAL_BALANCE\""
+              - "printf -v CURRENT_TS_HEX \"%x\" $(date +%s)"
+              - "date +%s | sha256sum | base64 | head -c 32 > password.txt"
+              - "curl -L https://raw.githubusercontent.com/gochain-io/aws/master/genesis.json -o $HOMEDIR/genesis.json"
+              - "curl -L https://raw.githubusercontent.com/gochain-io/aws/master/docker-compose.yml -o $HOMEDIR/docker-compose.yml"
+              - "export ACCOUNT_ID=$(sudo docker run -v $PWD:/root gochain/gochain gochain --datadir /root/node --password /root/password.txt account new | awk -F '[{}]' '{print $2}')"
+              - "echo \"GOCHAIN_ACCT=0x$ACCOUNT_ID\" > $HOMEDIR/.env"
+              - "echo \"GOCHAIN_NETWORK=$NETWORK_ID\" >> $HOMEDIR/.env"
+              - "sed -i \"s/<network_id>/$NETWORK_ID/\" $HOMEDIR/genesis.json"
+              - "sed -i \"s/<current_ts_hex>/$CURRENT_TS_HEX/\" $HOMEDIR/genesis.json"
+              - "sed -i \"s/<signer_address>/$ACCOUNT_ID/\" $HOMEDIR/genesis.json"
+              - "sed -i \"s/<voter_address>/$ACCOUNT_ID/\" $HOMEDIR/genesis.json"
+              - "sed -i \"s/<address>/$ACCOUNT_ID/\" $HOMEDIR/genesis.json"
+              - "sed -i \"s/<hex>/$INITIAL_BALANCE_HEX/\" $HOMEDIR/genesis.json"
+              - "sudo sudo rm -rf $PWD/node/GoChain"
+              - "sudo docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json"
+              - "sudo docker-compose up -d"              
+      Volumes:
+        - Device: "xvdh"
+          VolumeId: !Ref Volume1
+      Tags:
+        - Key: Name
+          Value: !Sub "GoChain-${NetworkId}-1"  
+  MasterIPAddress:    
+    Type: "AWS::EC2::EIP"
+    Properties:
+      InstanceId: !Ref Node1      
+Outputs:
+  Node1InstanceId:
+    Description: "Node Instance Id"
+    Value: !Ref Node1
+  Node1PublicIp:
+    Description: "Node1 Public Ip"
+    Value: !GetAtt Node1.PublicIp
