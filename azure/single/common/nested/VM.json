@@ -1,0 +1,124 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "authType": {
+        "type": "string"
+      },
+      "apiVersionVirtualMachines": {
+        "type": "string"
+      },
+      "storagePerformance": {
+        "type": "string"
+      },
+      "nicName": {
+        "type": "string"
+      },
+      "vmSize": {
+        "type": "string"
+      },
+      "adminUsername": {
+        "type": "string"
+      },
+      "adminPassword": {
+        "type": "securestring"
+      },
+      "adminSSHKey": {
+        "type": "string"
+      },
+      "ubuntuImage": {
+        "type": "object"
+      },
+      "dnsName": {
+        "type": "string"
+      },
+      "nameInfix": {
+        "type": "string"
+      },
+      "location": {
+        "type": "string"
+      }
+    },
+    "variables": {
+      "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]"
+    },
+    "resources": [
+      {
+        "condition": "[equals(parameters('authType'),'password')]",
+        "apiVersion": "[parameters('apiVersionVirtualMachines')]",
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[concat(parameters('nameInfix'),'p')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "hardwareProfile": {
+            "vmSize": "[parameters('vmSize')]"
+          },
+          "osProfile": {
+            "computerName": "[parameters('dnsName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]"
+          },
+          "storageProfile": {
+            "imageReference": "[parameters('ubuntuImage')]",
+            "osDisk": {
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[concat(parameters('storagePerformance'), '_LRS')]"
+              }
+            }
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('nicName')))]"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "condition": "[equals(parameters('authType'),'sshPublicKey')]",
+        "apiVersion": "[parameters('apiVersionVirtualMachines')]",
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[concat(parameters('nameInfix'),'s')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "hardwareProfile": {
+            "vmSize": "[parameters('vmSize')]"
+          },
+          "osProfile": {
+            "computerName": "[parameters('dnsName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": true,
+              "ssh": {
+                "publicKeys": [
+                  {
+                    "path": "[variables('sshKeyPath')]",
+                    "keyData": "[parameters('adminSSHKey')]"
+                  }
+                ]
+              }
+            }
+          },
+          "storageProfile": {
+            "imageReference": "[parameters('ubuntuImage')]",
+            "osDisk": {
+              "createOption": "FromImage",
+              "managedDisk": {
+                "storageAccountType": "[concat(parameters('storagePerformance'), '_LRS')]"
+              }
+            }
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('nicName')))]"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+  

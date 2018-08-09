@@ -1,14 +1,7 @@
-# Private GoChain Deployments
+# How to test
 
-You can deploy GoChain in a private environment for the most optimized, stable 100% Ethereum compatible private blockchain.
-
-## On Your Own Hardware
-
-See [/nodes/custom](/nodes/custom) for more information.
-
-## Testing Your Deployment
-
-Once you've deployed, test that it's working by trying the following commands:
+1. Launch a gochain single node from a marketplace or using the template
+2. Check if the node is running   
 
 ```sh
 curl -X POST -H "Content-Type: application/json" --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":67}' http://IP_ADDRESS_OF_THE_NODE:8545
@@ -53,7 +46,7 @@ cat password.txt
 6. Launch the interactive GoChain console on the machine you ssh'd into:
 
 ```sh
-sudo docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node attach
+sudo docker run --rm -it -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node attach
 ```
 
 7. Check the balance of the genesis account

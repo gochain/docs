@@ -7,10 +7,10 @@ A GoChain signer is a company/entity that is given the privilege of signing bloc
 ## What’s in it for a Signer?
 
 * Publicly supporting the cause of a greener, more decentralized blockchain network
-* 7 GOC per block signed
+* 7 GO per block signed
 * Blocks are signed every 5 seconds
 * Even distribution amongst all signers
-* ~44M new GOC awarded per year
+* ~44M new GO awarded per year
 * Early signers earn more due to the network being smaller
 
 ## Company Requirements

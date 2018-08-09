@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "authType": {
+      "type": "string"
+    },
+    "adminUsername": {
+      "type": "string"
+    },
+    "artifactsLocationURL": {
+      "type": "string"
+    },
+    "networkId": {
+      "type": "string"
+    },
+    "initialBalance": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "dnsName": {
+      "type": "string"
+    },
+    "fqdn": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "apiVersionVirtualMachinesExtensions": "2016-03-30",
+    "dockerfile": "docker-compose.yml"
+  },
+  "resources": [
+    {
+      "apiVersion": "[variables('apiVersionVirtualMachinesExtensions')]",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('dnsName'), '/newuserscript')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": [
+            "[concat(parameters('artifactsLocationURL'), '/scripts/configure.sh')]"
+          ]
+        },
+        "protectedSettings": {
+          "commandToExecute": "[concat('/bin/bash configure.sh \"', parameters('adminUsername'), '\" \"',parameters('artifactsLocationURL'), '\" \"', parameters('fqdn'), '\" \"', parameters('networkId'), '\" \"', parameters('initialBalance'), '\"')]"
+        }
+      }
+    }
+  ]
+}

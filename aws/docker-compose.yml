@@ -1,0 +1,19 @@
+version: "3"
+services:
+  node:
+    container_name: node
+    image: gochain/gochain:${GOCHAIN_TAG:-stable}
+    ports:
+      - "30303:30303"
+      - "8545:8545"
+      - "30303:30303/udp"
+    volumes:
+      - .:/gochain
+    command: gochain --networkid ${GOCHAIN_NETWORK}  --rpc --rpcaddr 0.0.0.0 --nodiscover --datadir /gochain/node --cache ${GOCHAIN_CACHE:-1024} --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt
+    restart: always
+  watchtower:
+    container_name: watchtower
+    image: v2tec/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
