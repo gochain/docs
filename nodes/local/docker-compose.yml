@@ -1,0 +1,69 @@
+version: "3"
+services:
+  node:
+    container_name: node
+    image: gcr.io/gochain-core/gochain:${GOCHAIN_IMAGE:-latest}
+    ports:
+      # Netstats
+      - "80:80"
+      # Proxy
+      - "8545:8080"
+      # Explorer
+      - "8000:8000"
+    command: gochain --dev --rpc --metrics --pprof --netstats node:ironsecret@localhost
+    restart: always
+  netstats:
+    container_name: netstats
+    image: gochain/netstats:${NETSTATS_IMAGE:-latest}
+    environment:
+      - PORT=80
+      - WS_SECRET=ironsecret
+    network_mode: "service:node"
+    depends_on:
+      - node
+    restart: always
+  proxy:
+    container_name: proxy
+    image: gochain/rpc-proxy:${RPC_PROXY_IMAGE:-latest}
+    depends_on:
+      - node
+    network_mode: "service:node"
+    command: -port 8080 -url http://localhost:8545 -allow "eth_blockNumber,eth_getBalance,eth_sendRawTransaction,eth_gasPrice,eth_estimateGas,net_version,eth_getTransaction,eth_getTransactionReceipt,eth_getTransactionCount,eth_getFilterChanges,net_listening,eth_getBlockByHash,eth_uninstallFilter,eth_getBlockByNumber,eth_newBlockFilter,eth_newPendingTransactionFilter,eth_blockNumber,eth_totalSupply" -rpm 1000
+    restart: always
+  mongodb:
+    container_name: "mongodb"
+    image: mongo
+    network_mode: "service:node"
+    depends_on:
+      - node
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    restart: always
+  explorer:
+    container_name: explorer
+    image: gochain/explorer:${EXPLORER_IMAGE:-latest}
+    network_mode: "service:node"
+    depends_on:
+      - node
+      - mongodb
+    environment:
+      - RPC_URL=http://localhost:8080
+      - PORT=8000
+      - MONGO_URI=mongodb://localhost/blockDB
+    command: "node app.js"
+    restart: always
+  grabber:
+    container_name: grabber
+    image: gochain/explorer:${EXPLORER_IMAGE:-latest}
+    network_mode: "service:node"
+    depends_on:
+      - node
+      - explorer
+      - mongodb
+    environment:
+      - RPC_URL=http://localhost:8080
+      - MONGO_URI=mongodb://localhost/blockDB
+    command: "node tools/grabber.js"
+    restart: always
