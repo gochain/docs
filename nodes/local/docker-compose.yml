@@ -24,7 +24,7 @@ services:
     restart: always
   proxy:
     container_name: proxy
-    image: gochain/rpc-proxy:${RPC_PROXY_IMAGE:-latest}
+    image: gcr.io/gochain-core/rpc-proxy:${RPC_PROXY_IMAGE:-latest}
     depends_on:
       - node
     network_mode: "service:node"
