@@ -43,7 +43,7 @@ services:
     restart: always
   explorer:
     container_name: explorer
-    image: gochain/explorer:${EXPLORER_IMAGE:-latest}
+    image: gcr.io/gochain-core/explorer:${EXPLORER_IMAGE:-latest}
     network_mode: "service:node"
     depends_on:
       - node
@@ -56,7 +56,7 @@ services:
     restart: always
   grabber:
     container_name: grabber
-    image: gochain/explorer:${EXPLORER_IMAGE:-latest}
+    image: gcr.io/gochain-core/explorer:${EXPLORER_IMAGE:-latest}
     network_mode: "service:node"
     depends_on:
       - node
