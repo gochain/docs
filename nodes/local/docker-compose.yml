@@ -14,7 +14,7 @@ services:
     restart: always
   netstats:
     container_name: netstats
-    image: gochain/netstats:${NETSTATS_IMAGE:-latest}
+    image: gcr.io/gochain-core/netstats:${NETSTATS_IMAGE:-latest}
     environment:
       - PORT=80
       - WS_SECRET=ironsecret
