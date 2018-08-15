@@ -1,10 +1,12 @@
 # Running a Node
 
-This directory contains instructions for configuring and running a GoChain node with `docker-compose` on either the `testnet` or `mainnet`.
+This directory contains instructions for configuring and running GoChain with `docker-compose` on the `testnet`, `mainnet`, a private network, or a local development instance.
 
 Instructions for running a custom private network are [here](custom).
 
 Instructions for running a *signing* node are [here](../signers/nodes).
+
+
 
 ## Prerequisites
 
