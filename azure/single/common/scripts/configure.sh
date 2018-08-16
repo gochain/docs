@@ -37,7 +37,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce
 sudo systemctl enable docker
 sleep 5
-sudo curl -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 #########################################
@@ -56,6 +56,7 @@ sed -i "s/<hex>/$INITIAL_BALANCE_HEX/" $HOMEDIR/genesis.json || exit 1;
 
 sudo sudo rm -rf $PWD/node/GoChain
 sudo docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json
+sudo docker rm -f $(docker ps -a -q)
 #########################################
 # Install docker image from private repo
 #########################################
