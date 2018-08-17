@@ -138,7 +138,7 @@
       "vmSize": "[steps('size').vmSize]",
       "networkId": "[steps('settings').networkId]",
       "initialBalance": "[steps('settings').initialBalance]",
-      "location": "[basics('location')]"
+      "location": "[location()]"
     }
   }
 }

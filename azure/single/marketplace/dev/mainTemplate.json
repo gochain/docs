@@ -54,34 +54,35 @@
       "type": "string",
       "defaultValue": "Standard_D4s_v3",
       "metadata": {
-        "description": "Size of the virtual machine used for STRATO api nodes"
+        "description": "Size of the virtual machine used for nodes"
       }
     },        
     "networkId": {
-        "type": "string",
-        "metadata": {
-          "description": "Network identifier for the private gochain network"
-        }         
-      },
+      "type": "string",
+      "metadata": {
+        "description": "Network identifier for the private gochain network"
+      }         
+    },
     "initialBalance": {
-        "type": "string",        
-        "defaultValue": "1000000000",
-        "metadata": {
+      "type": "string",        
+      "defaultValue": "1000000000",
+      "metadata": {
           "description": "Initial account balance for admin account in the private gochain network"
-        }
-      },
-      "location": {
-        "type": "string",
-        "metadata": {
-          "description": "Location/region to deploy the gochain assets"
-        }
-      },
-      "baseUrl": {
-        "type": "string",
-        "metadata": {
-          "description": "The base url for nested resources the deploy the gochain network template"
-        }
       }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "Location/region to deploy the gochain assets"
+      }
+    },
+    "baseUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "The base url for nested resources the deploy the gochain network template"
+      },
+      "defaultValue": "https://caleteetimages.blob.core.windows.net/sassets"
+    }
   },
   "variables": {
     "apiVersionDeployments": "2016-09-01",
