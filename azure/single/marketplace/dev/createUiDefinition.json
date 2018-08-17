@@ -107,7 +107,8 @@
             "name": "networkId",
             "type": "Microsoft.Common.TextBox",
             "label": "Network Id",
-            "toolTip": "String used for network ID",
+            "defaultValue": "10101010",
+            "toolTip": "ID used of the private GoChain network.  Only nodes that share the same ID can peer with each other.",
             "constraints": {
               "required": true,
               "regex": "^[0-9]{4,10}$",
@@ -118,7 +119,8 @@
             "name": "initialBalance",
             "type": "Microsoft.Common.TextBox",
             "label": "Initial balance",
-            "toolTip": "Number used for picking initial supply for this node",
+            "defaultValue": "1000000000",
+            "toolTip": "Ether provisioned for the initial account on the private GoChain blockchain",
             "constraints": {
               "required": true,
               "regex": "^[0-9]+$",
