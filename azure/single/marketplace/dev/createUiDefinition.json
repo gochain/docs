@@ -5,23 +5,46 @@
   "parameters": {
     "basics": [
       {
-        "name": "vmName",
+        "name": "name",
         "type": "Microsoft.Common.TextBox",
-        "label": "VM Name",
-        "toolTip": "String used as a base for naming resources (6 alphanumeric characters or less).  A unique hash is prepended to the string for some resources, while resource-specific information is appended.",
+        "label": "Name",
+        "toolTip": "Name of the virtual machine to that will be provisioned.  This should be less than 15 characters in length.",
         "constraints": {
           "required": true,
-          "regex": "^[a-z][a-z0-9-]{1,5}$",
-          "validationMessage": "Resource prefix must be between 2 and 6 characters long, must begin with a lowercase letter, and can contain only numbers and lowercase letters."
+          "regex": "^[a-z][a-z0-9-]{1,15}$",
+          "validationMessage": "Name should be between 1 and 15 characters in length"
         }
-      }, 
+      },
       {
-        "name": "adminUsername",
+        "name": "vmstorageperf",
+        "type": "Microsoft.Common.DropDown",
+        "label": "VM disk type",
+        "toolTip": "Premium disks (SSD) are backed by solid state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive applications and production workloads. Standard disks (HDD) are backed by magnetic drives and are preferable for applications where data is accessed infrequently. Zone-redundant disks are backed by Zone redundant storage (ZRS) that replicates your data across multiple zones and are available even if a single zone is down.",
+        "defaultValue": "Premium SSD",
+        "constraints": {
+          "allowedValues": [
+            {
+              "label": "Premium SSD",
+              "value": "Premium"
+            },
+            {
+              "label": "Standard HDD",
+              "value": "Standard"
+            }
+          ]
+        }
+      },
+      {
+        "name": "username",
         "type": "Microsoft.Compute.UserNameTextBox",
-        "label": "VM user name",
-        "defaultValue": "gochain",
+        "label": "Username",
         "toolTip": "Admin username for all of the deployed virtual machines.",
-        "osPlatform": "Linux"
+        "osPlatform": "Linux",
+        "constraints": {
+          "required": true,
+          "regex": "^[a-z][a-z0-9-]{1,15}$",
+          "validationMessage": "Name should be between 1 and 15 characters in length"
+        }
       }, 
       {
         "name": "adminCredentials",
@@ -44,112 +67,78 @@
           "hideConfirmation": false
         },
         "osPlatform": "Linux"
-      },
-      {
-        "name": "networkId",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Network Id",
-        "toolTip": "String used for network ID",
-        "constraints": {
-          "required": true,
-          "regex": "^[0-9]{4,10}$",
-          "validationMessage": "Network ID should contains only numbers and must be from 4 to 10 length"
-        }
-      },       
-      {
-        "name": "initialBalance",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Initial balance",
-        "toolTip": "Number used for picking initial supply for this node",
-        "constraints": {
-          "required": true,
-          "regex": "^[0-9]+$",
-          "validationMessage": "Initial balance should be a number"
-        }
       }
     ],
     "steps": [
       {
-        "name": "vmSize",
-        "label": "Virtual machine size and performance",
+        "name": "size",
+        "label": "Size",
         "subLabel": {
-          "preValidation": "Define the size and performance of the virtual machine",
+          "preValidation": "Choose virtual machine size",
           "postValidation": "Done"
         },
-        "bladeTitle": "Virtual Machine Size and Performance",
+        "bladeTitle": "Size",
         "elements": [
           {
-            "name": "vmStoragePerformance",
-            "type": "Microsoft.Common.OptionsGroup",
-            "label": "Storage performance",
-            "defaultValue": "Premium",
-            "toolTip": "Standard storage is backed by magnetic drives and provides the lowest cost per GB. Premium storage accounts are backed by solid state drives and offer consistent, low-latency performance. They can only be used with Azure virtual machine disks, and are best for I/O-intensive applications. This setting can't be changed after the storage account is created. [Learn more](https://azure.microsoft.com/documentation/articles/storage-introduction/#introducing-the-azure-storage-services)",
-            "constraints": {
-              "allowedValues": [
-                {
-                  "label": "Standard",
-                  "value": "Standard"
-                },
-                {
-                  "label": "Premium",
-                  "value": "Premium"
-                }
-              ]
-            },
-            "visible": true
-          },
-          {
-            "name": "vmSizeHDD",
+            "name": "vmSize",
             "type": "Microsoft.Compute.SizeSelector",
             "label": "Virtual machine size",
             "toolTip": "",
             "recommendedSizes": [
-              "Standard_D3_v2",
-              "Standard_D4_v2"
+              "Standard_D2s_v3",
+              "Standard_D4s_v3",
+              "Standard_E2s_v3"
             ],
-            "constraints": {
-              "allowedSizes": [
-                "Standard_D3_v2",
-                "Standard_D4_v2"
-              ]
-            },
             "osPlatform": "Linux",
-            "count": 1,
-            "visible": "[equals(steps('vmSize').vmStoragePerformance, 'Standard')]"
-          },
+            "count": 1
+          }
+        ]
+      },
+      {
+        "name": "settings",
+        "label": "Settings",
+        "subLabel": {
+          "preValidation": "GoChain configuration",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Settings",
+        "elements": [
           {
-            "name": "stratoApiVmSizeSSD",
-            "type": "Microsoft.Compute.SizeSelector",
-            "label": "Virtual machine size",
-            "toolTip": "",
-            "recommendedSizes": [
-              "Standard_DS3_v2",
-              "Standard_DS4_v2"
-            ],
+            "name": "networkId",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Network Id",
+            "toolTip": "String used for network ID",
             "constraints": {
-              "allowedSizes": [
-                "Standard_DS3_v2",
-                "Standard_DS4_v2"
-              ]
-            },
-            "osPlatform": "Linux",
-            "count": 1,
-            "visible": "[equals(steps('vmSize').vmStoragePerformance, 'Premium')]"
+              "required": true,
+              "regex": "^[0-9]{4,10}$",
+              "validationMessage": "Network ID should contains only numbers and must be from 4 to 10 length"
+            }
+          },       
+          {
+            "name": "initialBalance",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Initial balance",
+            "toolTip": "Number used for picking initial supply for this node",
+            "constraints": {
+              "required": true,
+              "regex": "^[0-9]+$",
+              "validationMessage": "Initial balance should be a number"
+            }
           }
         ]
       }
     ],
     "outputs": {
-      "vmName": "[basics('vmName')]",
+      "vmName": "[basics('name')]",
       "authType": "[basics('adminCredentials').authenticationType]",
-      "adminUsername": "[basics('adminUsername')]",
+      "adminUsername": "[basics('username')]",
       "adminPassword": "[basics('adminCredentials').password]",
       "adminSSHKey": "[basics('adminCredentials').sshPublicKey]",
-      "vmStoragePerformance": "[steps('vmSize').vmStoragePerformance]",
-      "vmSize": "[coalesce(steps('vmSize').vmSizeHDD, steps('vmSize').vmSizeSSD)]",
-      "networkId": "[basics('networkId')]",
-      "initialBalance": "[basics('initialBalance')]"
-      
+      "vmStoragePerformance": "[basics('vmstorageperf')]",
+      "vmSize": "[steps('size').vmSize]",
+      "networkId": "[steps('settings').networkId]",
+      "initialBalance": "[steps('settings').initialBalance]",
+      "location": "[location()]"
     }
   }
 }

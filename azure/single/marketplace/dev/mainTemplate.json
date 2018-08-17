@@ -7,7 +7,7 @@
       "metadata": {
         "description": "String used as the name for the virtual machine"
       },
-      "maxLength": 12
+      "maxLength": 15
     },
     "authType": {
       "type": "string",
@@ -21,7 +21,6 @@
     },
     "adminUsername": {
       "type": "string",
-      "defaultValue": "gochain",
       "metadata": {
         "description": "Administrator username of each deployed VM (alphanumeric characters only)"
       }
@@ -48,29 +47,42 @@
         "Premium"
       ],
       "metadata": {
-        "description": "Storage performance level for STRATO api virtual machines"
+        "description": "Storage performance level for virtual machines"
       }
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS3_v2",
-      "allowedValues": [
-        "Standard_D3_v2",
-        "Standard_D4_v2",
-        "Standard_DS3_v2",
-        "Standard_DS4_v2"
-      ],
+      "defaultValue": "Standard_D4s_v3",
       "metadata": {
-        "description": "Size of the virtual machine used for STRATO api nodes"
+        "description": "Size of the virtual machine used for nodes"
       }
     },        
     "networkId": {
-        "type": "string"            
-      },
-      "initialBalance": {
-        "type": "string",        
-        "defaultValue": "1000000000"
+      "type": "string",
+      "metadata": {
+        "description": "Network identifier for the private gochain network"
+      }         
+    },
+    "initialBalance": {
+      "type": "string",        
+      "defaultValue": "1000000000",
+      "metadata": {
+          "description": "Initial account balance for admin account in the private gochain network"
       }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "Location/region to deploy the gochain assets"
+      }
+    },
+    "baseUrl": {
+      "type": "string",
+      "metadata": {
+        "description": "The base url for nested resources the deploy the gochain network template"
+      },
+      "defaultValue": "https://caleteetimages.blob.core.windows.net/sassets"
+    }
   },
   "variables": {
     "apiVersionDeployments": "2016-09-01",
@@ -81,13 +93,11 @@
     "apiVersionVirtualMachines": "2017-03-30",
     "apiVersionVirtualNetworks": "2016-09-01",
     "apiVersionStorageAccounts": "2016-01-01",
-    "baseUrl": "https://gochain.blob.core.windows.net/gochain",
     "nameInfix": "[toLower(substring(concat(parameters('vmName'), uniqueString(resourceGroup().id)), 0, 9))]",
     "dnsName": "[if(equals(parameters('authType'), 'password'), concat(variables('nameInfix'),'p'), concat(variables('nameInfix'),'s'))]",
     "gochainPort": 30303,
     "gochainRPCPort": 8545,
     "sshPort": 22,
-    "location": "westus",
     "subnetName": "[uniqueString(concat(resourceGroup().id, concat(variables('nameInfix'), 'subnet')))]",
     "subnetPrefix": "10.1.0.0/24",
     "nsgName": "[concat(variables('nameInfix'), '-nsg')]",
@@ -111,15 +121,14 @@
       "name": "[concat(variables('nameInfix'), '-vnet')]",
       "addressSpacePrefix": "10.1.0.0/20"
     },
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', variables('vNet').name)]",
-    "subnetRef": "[concat(variables('vnetID'),'/subnets/', variables('subnetName'))]"
+    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNet').name, variables('subnetName'))]"
   },
   "resources": [
     {
       "apiVersion": "[variables('apiVersionPublicIPAddresses')]",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('publicIpAddressName')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
@@ -131,7 +140,7 @@
       "apiVersion": "[variables('apiVersionNetworkInterfaces')]",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('nicName')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[concat('Microsoft.Network/virtualNetworks/', variables('vNet').name)]",
         "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]",
@@ -161,7 +170,7 @@
       "apiVersion": "[variables('apiVersionNetworkSecurityGroups')]",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[variables('nsgName')]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "tags": {
         "displayName": "Network Security Group"
       },
@@ -216,7 +225,7 @@
       "apiVersion": "[variables('apiVersionVirtualNetworks')]",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('vNet').name]",
-      "location": "[variables('location')]",
+      "location": "[parameters('location')]",
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -237,7 +246,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(variables('baseUrl'), '/nested/VM.json')]",
+          "uri": "[concat(parameters('baseUrl'), '/nested/VM.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -275,7 +284,7 @@
             "value": "[variables('nameInfix')]"
           },
           "location": {
-            "value": "[variables('location')]"
+            "value": "[parameters('location')]"
           }
         }
       }
@@ -290,7 +299,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(variables('baseUrl'), '/nested/VMExtension.json')]",
+          "uri": "[concat(parameters('baseUrl'), '/nested/VMExtension.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -301,7 +310,7 @@
             "value": "[parameters('adminUsername')]"
           },
           "artifactsLocationURL": {
-            "value": "[variables('baseUrl')]"
+            "value": "[parameters('baseUrl')]"
           },          
           "networkId": {
             "value": "[parameters('networkId')]"
@@ -310,7 +319,7 @@
             "value": "[parameters('initialBalance')]"
           },          
           "location": {
-            "value": "[variables('location')]"
+            "value": "[parameters('location')]"
           },
           "dnsName": {
             "value": "[variables('dnsName')]"
