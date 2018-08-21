@@ -72,3 +72,13 @@ docker logs -f node
 - Send Transaction (transfer rewards): `eth.sendTransaction({from:eth.coinbase,to:'0xabcd',value:1000000000000000000})`
 
 More info on the console is available here: https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console
+
+## Troubleshooting
+
+If you are unable to diagnose a problem, you can try these steps in escalating order:
+
+1) Repair: `docker-compose up -d`
+2) Restart node: `docker-compose restart node`
+3) Restart all: `docker-compose down && docker-compose up -d`
+4) Restart docker: `service docker restart && docker-compose up -d`
+5) Reboot machine, `docker-compose up -d`
