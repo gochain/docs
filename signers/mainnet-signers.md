@@ -14,3 +14,4 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | **SheGO** | http://sheos.org/ |
 | **Warner BP** | https://warnerbusinesspark.ca/ |
 | **The Him** | http://www.thehimmusic.com/ |
+| **Primablock** | https://primablock.com/ |
