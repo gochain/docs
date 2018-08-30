@@ -1,6 +1,6 @@
 {
   "config": {
-    "chainId": "[network_id]",
+    "chainId": "#NETWORKID",
     "homesteadBlock": 0,
     "eip150Block": 0,
     "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
@@ -13,22 +13,22 @@
     }
   },
   "nonce": "0x0",
-  "timestamp": "0x[current_ts_hex]",
+  "timestamp": "0x#CURRENTTSHEX",
   "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "signers": [
-    "0x[signer_address]"
+    "0x#SIGNERADDRESS"
   ],
   "voters": [
-    "0x[voter_address]"
+    "0x#VOTERADDRESS"
   ],
-  "signer": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "signer": "0x#SIGNERADDRESS",
   "gasLimit": "0xc88afa0",
   "difficulty": "0x1",
   "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "coinbase": "0x0000000000000000000000000000000000000000",
   "alloc": {
-    "<address>": {
-      "balance": "0x[hex]"
+    "0x#ADDRESS": {
+      "balance": "0x#HEX"
     }
   },
   "number": "0x0",

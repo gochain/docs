@@ -47,13 +47,11 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "fileUris": [
-            "[uri(parameters('artifactsLocationUrl'), concat('scripts/configure.sh', parameters('artifactsLocationUrlSasToken')))]",
-            "[uri(parameters('artifactsLocationUrl'), concat('scripts/docker-compose.yml', parameters('artifactsLocationUrlSasToken')))]",
-            "[uri(parameters('artifactsLocationUrl'), concat('scripts/genesis.json', parameters('artifactsLocationUrlSasToken')))]"
+            "[uri(parameters('artifactsLocationUrl'), concat('scripts/configure.sh', parameters('artifactsLocationUrlSasToken')))]"
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('/bin/bash configure.sh \"', parameters('adminUsername'), '\" \"',parameters('artifactsLocationUrl'), '\" \"', parameters('fqdn'), '\" \"', parameters('networkId'), '\" \"', parameters('initialBalance'), '\"')]"
+          "commandToExecute": "[concat('/bin/bash configure.sh \"', parameters('adminUsername'), '\" \"',parameters('artifactsLocationUrl'), '\" \"', parameters('artifactsLocationUrlSasToken'), '\" \"', parameters('fqdn'), '\" \"', parameters('networkId'), '\" \"', parameters('initialBalance'), '\"')]"
         }
       }
     }
