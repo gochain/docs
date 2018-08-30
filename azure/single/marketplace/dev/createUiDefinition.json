@@ -89,6 +89,17 @@
               "Standard_D4s_v3",
               "Standard_E2s_v3"
             ],
+            "constraints": {
+              "allowedSizes": [
+                "Standard_D2s_v3",
+                "Standard_D4s_v3",
+                "Standard_D8s_v3",
+                "Standard_D16s_v3",
+                "Standard_D32s_v3",
+                "Standard_E2s_v3",
+                "Standard_E4s_v3"
+              ]
+            },
             "osPlatform": "Linux",
             "count": 1
           }
