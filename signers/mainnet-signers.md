@@ -11,7 +11,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | **ICOSyndicate** | https://icosyndicate.org/ | 
 | **Blockox Fund** | http://blockox.vc/ |
 | **SafeContracts** | https://safecontracts.io |
-| **SheGO** | http://sheos.org/ |
+| **SheGO** | http://shego.org/ |
 | **Warner BP** | https://warnerbusinesspark.ca/ |
 | **The Him** | http://www.thehimmusic.com/ |
 | **Primablock** | https://primablock.com/ |
