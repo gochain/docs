@@ -44,7 +44,7 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 #########################################
-date +%s | sha256sum | base64 | head -c 32 > password.txt
+date +%s | sha256sum | base64 | head -c 32 > $HOMEDIR/password.txt
 ACCOUNT_ID=$(sudo docker run -v $PWD:/root gochain/gochain gochain --datadir /root/node --password /root/password.txt account new | awk -F '[{}]' '{print $2}')
 
 echo "GOCHAIN_ACCT=0x$ACCOUNT_ID" > $HOMEDIR/.env
@@ -59,7 +59,7 @@ sed -i "s/#HEX/$INITIAL_BALANCE_HEX/g" $HOMEDIR/genesis.json || exit 1;
 
 sudo sudo rm -rf $PWD/node/GoChain
 sudo docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json
-sudo docker rm -f $(docker ps -a -q)
+)
 #########################################
 # Install docker image from private repo
 #########################################
