@@ -13,6 +13,11 @@ INITIAL_BALANCE=$6
 printf -v INITIAL_BALANCE_HEX "%x" "$INITIAL_BALANCE"
 printf -v CURRENT_TS_HEX "%x" $(date +%s)
 
+######################
+# URL parsing (root)
+######################
+ARTIFACTS_URL_ROOT=${ARTIFACTS_URL_PREFIX%\/*}
+
 ###########
 # Constants
 ###########
@@ -27,8 +32,8 @@ cd "/home/$AZUREUSER";
 ###########################
 # Copy asset files to home
 ###########################
-curl -L ${ARTIFACTS_URL_PREFIX}scripts/docker-compose.yml${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/docker-compose.yml
-curl -L ${ARTIFACTS_URL_PREFIX}scripts/genesis.json${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/genesis.json
+curl -L ${ARTIFACTS_URL_ROOT}/scripts/docker-compose.yml${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/docker-compose.yml
+curl -L ${ARTIFACTS_URL_ROOT}/scripts/genesis.json${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/genesis.json
 
 #########################################
 # Install docker and compose on all nodes
