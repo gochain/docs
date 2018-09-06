@@ -64,7 +64,6 @@ sed -i "s/#HEX/$INITIAL_BALANCE_HEX/g" $HOMEDIR/genesis.json || exit 1;
 
 sudo sudo rm -rf $PWD/node/GoChain
 sudo docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json
-
 #########################################
 # Install docker image from private repo
 #########################################
