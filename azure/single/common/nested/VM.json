@@ -3,49 +3,91 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "authType": {
-        "type": "string"
-      },
-      "apiVersionVirtualMachines": {
-        "type": "string"
+        "type": "string",
+        "defaultValue": "password",
+        "allowedValues": [
+          "password",
+          "sshPublicKey"
+        ],
+        "metadata": {
+          "description": "Type of authentication to use on the Virtual Machine."
+        }
       },
       "storagePerformance": {
-        "type": "string"
+        "type": "string",
+        "metadata": {
+          "description": "Storage performance level for the Virtual Machine."
+        }
       },
       "nicName": {
-        "type": "string"
+        "type": "string",
+        "metadata": {
+          "description": "Network interface card name for the Virtual Machine."
+        }
       },
       "vmSize": {
-        "type": "string"
+        "type": "string",
+        "metadata": {
+          "description": "Size of the Virtual Machine."
+        }
       },
       "adminUsername": {
-        "type": "string"
+        "type": "string",
+        "metadata": {
+          "description": "User name for the Virtual Machine."
+        }
       },
-      "adminPassword": {
-        "type": "securestring"
-      },
-      "adminSSHKey": {
-        "type": "string"
+      "adminPasswordOrKey": {
+        "type": "securestring",
+        "metadata": {
+          "description": "Password or ssh key for the Virtual Machine"
+        }
       },
       "ubuntuImage": {
-        "type": "object"
+        "type": "object",
+        "metadata": {
+          "description": "Ubuntu operating system version for the Virtual Machine."
+        }
       },
       "dnsName": {
-        "type": "string"
+        "type": "string",
+        "metadata": {
+          "description": "DNS name (prefix) of the Virtual Machine."
+        }
       },
       "nameInfix": {
-        "type": "string"
+        "type": "string",
+        "metadata": {
+          "description": "Prefix for the Virtual Machine name"
+        }
       },
       "location": {
-        "type": "string"
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "Location for the resources."
+        }
       }
     },
     "variables": {
-      "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]"
+      "apiVersionVirtualMachine": "2018-06-01",
+      "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
+      "linuxConfiguration": {
+        "disablePasswordAuthentication": true,
+        "ssh": {
+          "publicKeys": [
+            {
+              "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
+              "keyData": "[parameters('adminPasswordOrKey')]"
+            }
+          ]
+        }
+      }
     },
     "resources": [
       {
         "condition": "[equals(parameters('authType'),'password')]",
-        "apiVersion": "[parameters('apiVersionVirtualMachines')]",
+        "apiVersion": "[variables('apiVersionVirtualMachine')]",
         "type": "Microsoft.Compute/virtualMachines",
         "name": "[concat(parameters('nameInfix'),'p')]",
         "location": "[parameters('location')]",
@@ -56,50 +98,8 @@
           "osProfile": {
             "computerName": "[parameters('dnsName')]",
             "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
-          },
-          "storageProfile": {
-            "imageReference": "[parameters('ubuntuImage')]",
-            "osDisk": {
-              "createOption": "FromImage",
-              "managedDisk": {
-                "storageAccountType": "[concat(parameters('storagePerformance'), '_LRS')]"
-              }
-            }
-          },
-          "networkProfile": {
-            "networkInterfaces": [
-              {
-                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('nicName')))]"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "condition": "[equals(parameters('authType'),'sshPublicKey')]",
-        "apiVersion": "[parameters('apiVersionVirtualMachines')]",
-        "type": "Microsoft.Compute/virtualMachines",
-        "name": "[concat(parameters('nameInfix'),'s')]",
-        "location": "[parameters('location')]",
-        "properties": {
-          "hardwareProfile": {
-            "vmSize": "[parameters('vmSize')]"
-          },
-          "osProfile": {
-            "computerName": "[parameters('dnsName')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "linuxConfiguration": {
-              "disablePasswordAuthentication": true,
-              "ssh": {
-                "publicKeys": [
-                  {
-                    "path": "[variables('sshKeyPath')]",
-                    "keyData": "[parameters('adminSSHKey')]"
-                  }
-                ]
-              }
-            }
+            "adminPassword": "[parameters('adminPasswordOrKey')]",
+            "linuxConfiguration": "[if(equals(parameters('authType'), 'password'), json('null'), variables('linuxConfiguration'))]"
           },
           "storageProfile": {
             "imageReference": "[parameters('ubuntuImage')]",

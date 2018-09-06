@@ -5,11 +5,19 @@
 #############
 AZUREUSER=$1
 ARTIFACTS_URL_PREFIX=$2
-DNS_NAME=$3
-NETWORK_ID=$4
-INITIAL_BALANCE=$5
+ARTIFACTS_URL_SASTOKEN=$3
+DNS_NAME=$4
+NETWORK_ID=$5
+INITIAL_BALANCE=$6
+
 printf -v INITIAL_BALANCE_HEX "%x" "$INITIAL_BALANCE"
 printf -v CURRENT_TS_HEX "%x" $(date +%s)
+
+######################
+# URL parsing (root)
+######################
+ARTIFACTS_URL_ROOT=${ARTIFACTS_URL_PREFIX%\/*}
+
 ###########
 # Constants
 ###########
@@ -22,10 +30,10 @@ CONFIG_LOG_FILE_PATH="$HOMEDIR/config.log";
 cd "/home/$AZUREUSER";
 
 ###########################
-# Cache the scripts locally
+# Copy asset files to home
 ###########################
-curl -L ${ARTIFACTS_URL_PREFIX}/scripts/docker-compose.yml -o $HOMEDIR/docker-compose.yml
-curl -L ${ARTIFACTS_URL_PREFIX}/scripts/genesis.json -o $HOMEDIR/genesis.json
+curl -L ${ARTIFACTS_URL_ROOT}/scripts/docker-compose.yml${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/docker-compose.yml
+curl -L ${ARTIFACTS_URL_ROOT}/scripts/genesis.json${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/genesis.json
 
 #########################################
 # Install docker and compose on all nodes
@@ -41,22 +49,21 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 #########################################
-date +%s | sha256sum | base64 | head -c 32 > password.txt
+date +%s | sha256sum | base64 | head -c 32 > $HOMEDIR/password.txt
 ACCOUNT_ID=$(sudo docker run -v $PWD:/root gochain/gochain gochain --datadir /root/node --password /root/password.txt account new | awk -F '[{}]' '{print $2}')
 
 echo "GOCHAIN_ACCT=0x$ACCOUNT_ID" > $HOMEDIR/.env
 echo "GOCHAIN_NETWORK=$NETWORK_ID" >> $HOMEDIR/.env
 
-sed -i "s/<network_id>/$NETWORK_ID/" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/<current_ts_hex>/$CURRENT_TS_HEX/" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/<signer_address>/$ACCOUNT_ID/" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/<voter_address>/$ACCOUNT_ID/" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/<address>/$ACCOUNT_ID/" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/<hex>/$INITIAL_BALANCE_HEX/" $HOMEDIR/genesis.json || exit 1;
+sed -i "s/#NETWORKID/$NETWORK_ID/g" $HOMEDIR/genesis.json || exit 1;
+sed -i "s/#CURRENTTSHEX/$CURRENT_TS_HEX/g" $HOMEDIR/genesis.json || exit 1;
+sed -i "s/#SIGNERADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis.json || exit 1;
+sed -i "s/#VOTERADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis.json || exit 1;
+sed -i "s/#ADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis.json || exit 1;
+sed -i "s/#HEX/$INITIAL_BALANCE_HEX/g" $HOMEDIR/genesis.json || exit 1;
 
 sudo sudo rm -rf $PWD/node/GoChain
 sudo docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json
-sudo docker rm -f $(docker ps -a -q)
 #########################################
 # Install docker image from private repo
 #########################################

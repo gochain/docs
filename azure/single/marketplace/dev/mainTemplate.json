@@ -76,29 +76,34 @@
         "description": "Location/region to deploy the gochain assets"
       }
     },
-    "baseUrl": {
+    "_artifactsLocation": {
       "type": "string",
       "metadata": {
-        "description": "The base url for nested resources the deploy the gochain network template"
+        "description": "The base URI where artifacts required by this template are located including a trailing '/'"
       },
-      "defaultValue": "https://caleteetimages.blob.core.windows.net/sassets"
+      "defaultValue": "[deployment().properties.templateLink.uri]"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated. Use the defaultValue if the staging location is not secured."
+      },
+      "defaultValue": ""
     }
   },
   "variables": {
-    "apiVersionDeployments": "2016-09-01",
-    "apiVersionPublicIPAddresses": "2016-09-01",
-    "apiVersionAvailabilitySets": "2017-03-30",
-    "apiVersionNetworkSecurityGroups": "2016-09-01",
-    "apiVersionNetworkInterfaces": "2016-09-01",
-    "apiVersionVirtualMachines": "2017-03-30",
-    "apiVersionVirtualNetworks": "2016-09-01",
-    "apiVersionStorageAccounts": "2016-01-01",
+    "apiVersionDeployments": "2017-05-10",
+    "apiVersionPublicIPAddresses": "2017-10-01",
+    "apiVersionNetworkSecurityGroups": "2017-10-01",
+    "apiVersionNetworkInterfaces": "2017-10-01",
+    "apiVersionVirtualNetworks": "2017-10-01",
+    "apiVersionStorageAccounts": "2018-02-01",
     "nameInfix": "[toLower(substring(concat(parameters('vmName'), uniqueString(resourceGroup().id)), 0, 9))]",
     "dnsName": "[if(equals(parameters('authType'), 'password'), concat(variables('nameInfix'),'p'), concat(variables('nameInfix'),'s'))]",
     "gochainPort": 30303,
     "gochainRPCPort": 8545,
     "sshPort": 22,
-    "subnetName": "[uniqueString(concat(resourceGroup().id, concat(variables('nameInfix'), 'subnet')))]",
+    "subnetName": "[concat(variables('nameInfix'), 'subnet')]",
     "subnetPrefix": "10.1.0.0/24",
     "nsgName": "[concat(variables('nameInfix'), '-nsg')]",
     "nicName": "[concat(variables('nameInfix'), '-nic')]",
@@ -121,7 +126,8 @@
       "name": "[concat(variables('nameInfix'), '-vnet')]",
       "addressSpacePrefix": "10.1.0.0/20"
     },
-    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNet').name, variables('subnetName'))]"
+    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNet').name, variables('subnetName'))]",
+    "adminPasswordOrSSHKey": "[if(equals(parameters('authType'), 'password'), parameters('adminPassword'), parameter('adminSSHKey'))]"
   },
   "resources": [
     {
@@ -246,15 +252,12 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('baseUrl'), '/nested/VM.json')]",
+          "uri": "[uri(parameters('_artifactsLocation'), concat('nested/VM.json', parameters('_artifactsLocationSasToken')))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
           "authType": {
             "value": "[parameters('authType')]"
-          },
-          "apiVersionVirtualMachines": {
-            "value": "[variables('apiVersionVirtualMachines')]"
           },
           "storagePerformance": {
             "value": "[parameters('vmStoragePerformance')]"
@@ -268,11 +271,8 @@
           "adminUsername": {
             "value": "[parameters('adminUsername')]"
           },
-          "adminPassword": {
-            "value": "[parameters('adminPassword')]"
-          },
-          "adminSSHKey": {
-            "value": "[parameters('adminSSHKey')]"
+          "adminPasswordOrKey": {
+            "value": "[variables('adminPasswordOrSSHKey')]"
           },
           "ubuntuImage": {
             "value": "[variables('ubuntuImage')]"
@@ -299,7 +299,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('baseUrl'), '/nested/VMExtension.json')]",
+          "uri": "[uri(parameters('_artifactsLocation'), concat('nested/VMExtension.json', parameters('_artifactsLocationSasToken')))]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -310,8 +310,11 @@
             "value": "[parameters('adminUsername')]"
           },
           "artifactsLocationURL": {
-            "value": "[parameters('baseUrl')]"
-          },          
+            "value": "[parameters('_artifactsLocation')]"
+          },
+          "artifactsLocationUrlSasToken": {
+            "value": "[parameters('_artifactsLocationSasToken')]"
+          },         
           "networkId": {
             "value": "[parameters('networkId')]"
           },
