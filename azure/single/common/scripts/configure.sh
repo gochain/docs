@@ -33,7 +33,7 @@ cd "/home/$AZUREUSER";
 # Copy asset files to home
 ###########################
 curl -L ${ARTIFACTS_URL_ROOT}/scripts/docker-compose.yml${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/docker-compose.yml
-curl -L ${ARTIFACTS_URL_ROOT}/scripts/genesis.json${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/genesis.json
+curl -L ${ARTIFACTS_URL_ROOT}/scripts/genesis${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/genesis
 
 #########################################
 # Install docker and compose on all nodes
@@ -55,12 +55,14 @@ ACCOUNT_ID=$(sudo docker run -v $PWD:/root gochain/gochain gochain --datadir /ro
 echo "GOCHAIN_ACCT=0x$ACCOUNT_ID" > $HOMEDIR/.env
 echo "GOCHAIN_NETWORK=$NETWORK_ID" >> $HOMEDIR/.env
 
-sed -i "s/#NETWORKID/$NETWORK_ID/g" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/#CURRENTTSHEX/$CURRENT_TS_HEX/g" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/#SIGNERADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/#VOTERADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/#ADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis.json || exit 1;
-sed -i "s/#HEX/$INITIAL_BALANCE_HEX/g" $HOMEDIR/genesis.json || exit 1;
+sed -i "s/#NETWORKID/$NETWORK_ID/g" $HOMEDIR/genesis || exit 1;
+sed -i "s/#CURRENTTSHEX/$CURRENT_TS_HEX/g" $HOMEDIR/genesis || exit 1;
+sed -i "s/#SIGNERADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis || exit 1;
+sed -i "s/#VOTERADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis || exit 1;
+sed -i "s/#ADDRESS/$ACCOUNT_ID/g" $HOMEDIR/genesis || exit 1;
+sed -i "s/#HEX/$INITIAL_BALANCE_HEX/g" $HOMEDIR/genesis || exit 1;
+
+mv $HOMEDIR/genesis $HOMEDIR/genesis.json
 
 sudo sudo rm -rf $PWD/node/GoChain
 sudo docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json

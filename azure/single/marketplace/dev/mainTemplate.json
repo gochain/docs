@@ -99,7 +99,7 @@
     "apiVersionVirtualNetworks": "2017-10-01",
     "apiVersionStorageAccounts": "2018-02-01",
     "nameInfix": "[toLower(substring(concat(parameters('vmName'), uniqueString(resourceGroup().id)), 0, 9))]",
-    "dnsName": "[if(equals(parameters('authType'), 'password'), concat(variables('nameInfix'),'p'), concat(variables('nameInfix'),'s'))]",
+    "dnsName": "[variables('nameInfix')]",
     "gochainPort": 30303,
     "gochainRPCPort": 8545,
     "sshPort": 22,
@@ -127,7 +127,7 @@
       "addressSpacePrefix": "10.1.0.0/20"
     },
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vNet').name, variables('subnetName'))]",
-    "adminPasswordOrSSHKey": "[if(equals(parameters('authType'), 'password'), parameters('adminPassword'), parameter('adminSSHKey'))]"
+    "adminPasswordOrSSHKey": "[if(equals(parameters('authType'), 'password'), parameters('adminPassword'), parameters('adminSSHKey'))]"
   },
   "resources": [
     {
