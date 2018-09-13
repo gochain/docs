@@ -11,7 +11,7 @@
         "toolTip": "Name of the virtual machine to that will be provisioned.  This should be less than 15 characters in length.",
         "constraints": {
           "required": true,
-          "regex": "^[a-z][a-z0-9-]{1,15}$",
+          "regex": "^[a-z][a-z0-9-]{1,14}$",
           "validationMessage": "Name should be between 1 and 15 characters in length"
         }
       },

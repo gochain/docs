@@ -63,7 +63,6 @@
       },
       "location": {
         "type": "string",
-        "defaultValue": "[resourceGroup().location]",
         "metadata": {
           "description": "Location for the resources."
         }
@@ -86,10 +85,9 @@
     },
     "resources": [
       {
-        "condition": "[equals(parameters('authType'),'password')]",
         "apiVersion": "[variables('apiVersionVirtualMachine')]",
         "type": "Microsoft.Compute/virtualMachines",
-        "name": "[concat(parameters('nameInfix'),'p')]",
+        "name": "[parameters('nameInfix')]",
         "location": "[parameters('location')]",
         "properties": {
           "hardwareProfile": {
