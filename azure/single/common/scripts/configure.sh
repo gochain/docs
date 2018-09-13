@@ -66,7 +66,6 @@ mv $HOMEDIR/genesis $HOMEDIR/genesis.json
 
 sudo sudo rm -rf $PWD/node/GoChain
 sudo docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json
-
 #########################################
 # Install docker image from private repo
 #########################################
