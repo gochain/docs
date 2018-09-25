@@ -54,7 +54,7 @@ contract MyToken {
 
 ### This is really easy using the GoChain Wallet:
 
-1. Go to [https://wallet.gochain.io/](https://wallet.gochain.io/)
+* Go to [https://wallet.gochain.io/](https://wallet.gochain.io/)
 
 ![Testnet Screenshot](https://github.com/gochain-io/docs/blob/master/rtd/Testnet.png?raw=true "Optional Title")
 
