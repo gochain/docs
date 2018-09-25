@@ -10,8 +10,7 @@
 
   [VS Code Solidity Extension](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)
   
-  [Video Tutorial](https://www.youtube.com/watch?v=ltnK2EoSByw&feature=youtu.be)
-
+  
   Get some GO — Ask for some free testnet GO in our Testnet [Telegram](https://t.me/gochain_testnet) or buy some on KuCoin to deploy  to mainnet
 
 ## Deploying
