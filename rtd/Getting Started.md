@@ -55,6 +55,9 @@ contract MyToken {
 ### This is really easy using the GoChain Wallet:
 
 1. Go to [https://wallet.gochain.io/](https://wallet.gochain.io/)
+
+![Alt text](/user/Ian/desktop/Testnet.png?raw=true "Optional Title")
+
 2. In the top right, choose TestNet
 3. Click Open Wallet
 4. Paste your private key for your testnet wallet that has the GO you got from our Telegram
