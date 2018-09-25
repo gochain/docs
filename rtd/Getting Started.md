@@ -28,8 +28,9 @@ contract MyToken {
 
     /* Initializes contract with initial supply tokens to the creator of the contract */
     constructor() public {
-        uint256 initialSupply
+        uint256 initialSupply = 10000;
         balanceOf[msg.sender] = initialSupply;              // Give the creator all initial tokens
+        totalSupply = initialSupply;
     }
 
     /* Send coins */
