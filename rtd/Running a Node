@@ -82,3 +82,4 @@ If you are unable to diagnose a problem, you can try these steps in escalating o
 3) Restart all: `docker-compose down && docker-compose up -d`
 4) Restart docker: `service docker restart && docker-compose up -d`
 5) Reboot machine, `docker-compose up -d`
+
