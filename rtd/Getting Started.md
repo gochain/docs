@@ -56,7 +56,7 @@ contract MyToken {
 
 1. Go to [https://wallet.gochain.io/](https://wallet.gochain.io/)
 
-![Alt text](/user/Ian/desktop/Testnet.png?raw=true "Optional Title")
+![Alt text](/Users/Ian/desktop/Testnet.png?raw=true "Optional Title")
 
 2. In the top right, choose TestNet
 3. Click Open Wallet
