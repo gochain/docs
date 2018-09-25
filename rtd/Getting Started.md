@@ -27,9 +27,8 @@ contract MyToken {
     mapping (address => uint256) public balanceOf;
 
     /* Initializes contract with initial supply tokens to the creator of the contract */
-    constructor(
+    constructor() public {
         uint256 initialSupply
-        ) public {
         balanceOf[msg.sender] = initialSupply;              // Give the creator all initial tokens
     }
 
