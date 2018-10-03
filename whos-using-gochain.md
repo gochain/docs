@@ -9,6 +9,7 @@ All of these great companies are built on or are building on GoChain!
 * [PrimaBlock](https://primablock.com)
 * [MultiSender](https://multisender.app/)
 * [Monarch](https://monarchtoken.io/)
+* [TrueDeck](https://truedeck.io/)
 
 ## Wallets
 
@@ -27,6 +28,7 @@ Wallets that support GoChain:
 * [Bittrex](https://bittrex.com)
 * [Binance](https://binance.com)
 * [KuCoin](https://kucoin.com)
+* [UpBit](http://upbit.com/)
 
 ## Are you building on GoChain?
 
