@@ -23,6 +23,12 @@ You can also use existing Ethereum tools:
 
 If you are developing smart contracts or dapps to deploy to GoChain, you'll find the information you need here.
 
+### Who's Using GoChain?
+
+There are many great projects developing or already deployed on GoChain, [check them out here](whos-using-gochain.md).
+
+### Developing on GoChain
+
 * [GoChain TestNet Information](testnet/)
 * [How to Deploy a Smart Contract to GoChain in 5 Minutes](https://medium.com/gochain/how-to-deploy-a-smart-contract-in-5-minutes-bed2443be23c)
 * [Learn why GoChain fees are 7500x cheaper than Ethereum](https://medium.com/gochain/gochain-transaction-fees-are-at-least-7500x-less-than-ethereum-3b7060743717)
