@@ -12,6 +12,7 @@ All of these great companies are built on or are building on GoChain!
 * [TrueDeck](https://truedeck.io/)
 * [MBYS](https://mbys.io/)
 * [Esprezzo](https://esprezzo.io/)
+* [GoDapp](https://godapp.me/)
 
 ## Wallets
 
