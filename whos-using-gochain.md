@@ -11,6 +11,7 @@ All of these great companies are built on or are building on GoChain!
 * [Monarch](https://monarchtoken.io/)
 * [TrueDeck](https://truedeck.io/)
 * [MBYS](https://mbys.io/)
+* [Esprezzo](https://esprezzo.io/)
 
 ## Wallets
 
