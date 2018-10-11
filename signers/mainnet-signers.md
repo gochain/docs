@@ -5,9 +5,9 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | Name | Location| Signing Address |
 | --- | --------------- | --- |
 | [**GoChain**](https://gochain.io)  | New York, United States | [0xed7f2e81b0264177e0df8f275f97fd74fa51a896](https://explorer.gochain.io/addr/0xed7f2e81b0264177e0df8f275f97fd74fa51a896) |
-| | San Franscisco, United States | [0x3ad14430951aba12068a8167cebe3ddd57614432](https://explorer.gochain.io/addr/0x3ad14430951aba12068a8167cebe3ddd57614432) |
+| | San Francisco, United States | [0x3ad14430951aba12068a8167cebe3ddd57614432](https://explorer.gochain.io/addr/0x3ad14430951aba12068a8167cebe3ddd57614432) |
 | | New York, United States | [0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea](https://explorer.gochain.io/addr/0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea) |
-| | San Franscisco, United States | [0xf6290b7f9f871d21317acc259f2ae23c0aa69c73](https://explorer.gochain.io/addr/0xf6290b7f9f871d21317acc259f2ae23c0aa69c73) |
+| | San Francisco, United States | [0xf6290b7f9f871d21317acc259f2ae23c0aa69c73](https://explorer.gochain.io/addr/0xf6290b7f9f871d21317acc259f2ae23c0aa69c73) |
 | [**Cloud Carib**](https://www.cloudcarib.com/) | Nassau, Bahamas | [0xe1200caf0d92018fe111943faf91a0c5f6db34d1](https://explorer.gochain.io/addr/0xe1200caf0d92018fe111943faf91a0c5f6db34d1) |
 | [**Procurious**](https://www.procurious.com/) | Netherlands | [0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea](https://explorer.gochain.io/addr/0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea) |
 | [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
