@@ -70,6 +70,13 @@
           "description": "Initial account balance for admin account in the private gochain network"
       }
     },
+    "numberOfInstances": {
+      "type": "int",        
+      "defaultValue": 3,
+      "metadata": {
+          "description": "Number of highly available nodes to create in the cluster"
+      }
+    },
     "location": {
       "type": "string",
       "metadata": {
@@ -135,6 +142,10 @@
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[variables('publicIpAddressName')]",
       "location": "[parameters('location')]",
+      "copy": {
+        "name": "nicAddrLoop",
+        "count": "[parameters('numberOfInstances')]"
+      },
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
@@ -147,6 +158,10 @@
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('nicName')]",
       "location": "[parameters('location')]",
+      "copy": {
+        "name": "nicLoop",
+        "count": "[parameters('numberOfInstances')]"
+      },
       "dependsOn": [
         "[concat('Microsoft.Network/virtualNetworks/', variables('vNet').name)]",
         "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]",
@@ -320,6 +335,9 @@
           },
           "initialBalance": {
             "value": "[parameters('initialBalance')]"
+          },          
+          "numberOfInstances": {
+            "value": "[parameters('numberOfInstances')]"
           },          
           "location": {
             "value": "[parameters('location')]"

@@ -20,6 +20,9 @@
     "initialBalance": {
       "type": "string"
     },
+    "numberOfInstances": {
+      "type": "int"
+    },
     "location": {
       "type": "string"
     },
@@ -51,7 +54,7 @@
           ]
         },
         "protectedSettings": {
-          "commandToExecute": "[concat('/bin/bash configure.sh \"', parameters('adminUsername'), '\" \"',parameters('artifactsLocationUrl'), '\" \"', parameters('artifactsLocationUrlSasToken'), '\" \"', parameters('fqdn'), '\" \"', parameters('networkId'), '\" \"', parameters('initialBalance'), '\"')]"
+          "commandToExecute": "[concat('/bin/bash configure.sh \"', parameters('adminUsername'), '\" \"',parameters('artifactsLocationUrl'), '\" \"', parameters('artifactsLocationUrlSasToken'), '\" \"', parameters('fqdn'), '\" \"', parameters('networkId'), '\" \"', parameters('numberOfInstances'), '\" \"', parameters('initialBalance'), '\"')]"
         }
       }
     }

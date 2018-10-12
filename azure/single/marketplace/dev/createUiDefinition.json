@@ -137,6 +137,13 @@
               "regex": "^[0-9]+$",
               "validationMessage": "Initial balance should be a number"
             }
+          },
+          {
+            "name": "numberOfInstances",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Number of highly available nodes to create in the cluster",
+            "defaultValue": "3",
+            "toolTip": "Number of nodes"            
           }
         ]
       }
@@ -151,6 +158,7 @@
       "vmSize": "[steps('size').vmSize]",
       "networkId": "[steps('settings').networkId]",
       "initialBalance": "[steps('settings').initialBalance]",
+      "numberOfInstances": "[steps('settings').numberOfInstances]",
       "location": "[location()]"
     }
   }

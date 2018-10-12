@@ -89,6 +89,10 @@
         "type": "Microsoft.Compute/virtualMachines",
         "name": "[parameters('nameInfix')]",
         "location": "[parameters('location')]",
+        "copy": {
+          "name": "extLoop",
+          "count": "[parameters('numberOfInstances')]"
+        },
         "properties": {
           "hardwareProfile": {
             "vmSize": "[parameters('vmSize')]"
