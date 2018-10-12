@@ -10,9 +10,3 @@ services:
       - .:/gochain
     command: gochain --testnet --config /gochain/config.toml --datadir /gochain/node --cache ${GOCHAIN_CACHE:-4096} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt --netstats ${NETSTATS_NAME}:${NETSTATS_SECRET}@159.65.228.180
     restart: always
-  watchtower:
-    container_name: watchtower
-    image: v2tec/watchtower:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
