@@ -63,6 +63,7 @@ docker logs -f node
 - Restart Container: `docker-compose restart node`
 - Restart All: `docker-compose down && docker-compose up -d`
 - Console Attach: `docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node attach`
+- Update image: `docker-compose pull`
 
 ### Console Commands
 
