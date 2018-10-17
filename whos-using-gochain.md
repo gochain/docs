@@ -13,6 +13,7 @@ All of these great companies are built on or are building on GoChain!
 * [MBYS](https://mbys.io/)
 * [Esprezzo](https://esprezzo.io/)
 
+
 ## Wallets
 
 Wallets that support GoChain:
@@ -31,6 +32,7 @@ Wallets that support GoChain:
 * [Binance](https://binance.com)
 * [KuCoin](https://kucoin.com)
 * [UpBit](http://upbit.com/)
+* [GoDDEX](https://goddex.exchange/)
 
 ## Are you building on GoChain?
 
