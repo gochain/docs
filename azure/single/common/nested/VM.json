@@ -180,7 +180,7 @@
       "name": "[concat(concat(parameters('dnsName'), copyIndex()), '/newuserscript')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', concat(parameters('nameInfix'),copyIndex()))]",
+        "[concat('Microsoft.Compute/virtualMachines/', concat(parameters('nameInfix'),copyIndex()))]"
       ],
       "copy": {
         "name": "extLoop",
