@@ -63,25 +63,25 @@ echo "containerName $STORAGE_CONTAINER_NAME" >> $HOMEDIR/fuse_connection.cfg
 # Copy asset files to home
 ###########################
 echo "Downloading everything: $(date)" >> ${HOMEDIR}/output.log
-curl --retry 10 --retry-connrefused --retry-delay 6 -L ${ARTIFACTS_URL_ROOT}/scripts/docker-compose.yml${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/docker-compose.yml || exit 1;
-curl --retry 10 --retry-connrefused --retry-delay 6 -L ${ARTIFACTS_URL_ROOT}/scripts/genesis${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/genesis || exit 1;
-curl --retry 10 --retry-connrefused --retry-delay 6 -L ${ARTIFACTS_URL_ROOT}/scripts/config${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/config || exit 1;
+curl --retry 10  --retry-delay 6 -L ${ARTIFACTS_URL_ROOT}/scripts/docker-compose.yml${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/docker-compose.yml || exit 1;
+curl --retry 10  --retry-delay 6 -L ${ARTIFACTS_URL_ROOT}/scripts/genesis${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/genesis || exit 1;
+curl --retry 10  --retry-delay 6 -L ${ARTIFACTS_URL_ROOT}/scripts/config${ARTIFACTS_URL_SASTOKEN} -o $HOMEDIR/config || exit 1;
 
 #########################################
 # Install docker and compose on all nodes
 #########################################
 echo "Installing docker,blobfuse: $(date)" >> ${HOMEDIR}/output.log
-curl --retry 10 --retry-connrefused --retry-delay 6 -L https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -o $HOMEDIR/packages-microsoft-prod.deb || exit 1;
+curl --retry 10  --retry-delay 6 -L https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -o $HOMEDIR/packages-microsoft-prod.deb || exit 1;
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-curl --retry 10 --retry-connrefused --retry-delay 6 -fsSL https://download.docker.com/linux/ubuntu/gpg -o $HOMEDIR/gpg || exit 1;
+curl --retry 10  --retry-delay 6 -fsSL https://download.docker.com/linux/ubuntu/gpg -o $HOMEDIR/gpg || exit 1;
 sudo apt-key add $HOMEDIR/gpg
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt-get update
 sudo apt-get install -y docker-ce blobfuse
 sudo systemctl enable docker
 sleep 5
-sudo curl --retry 10 --retry-connrefused --retry-delay 6 -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose || exit 1;
+sudo curl --retry 10  --retry-delay 6 -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose || exit 1;
 sudo chmod +x /usr/local/bin/docker-compose
 
 ###########################
