@@ -108,7 +108,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
-      "apiVersion": "2018-02-01",
+      "apiVersion": "2018-07-01",
       "location": "[parameters('location')]",
       "kind": "BlobStorage",
       "sku": {
@@ -123,7 +123,7 @@
       "resources": [
         {
           "type": "blobServices/containers",
-          "apiVersion": "2018-03-01-preview",
+          "apiVersion": "2018-07-01",
           "name": "[concat('default/', variables('containerName'))]",
           "dependsOn": [
             "[variables('storageAccountName')]"
