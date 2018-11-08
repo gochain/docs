@@ -39,6 +39,8 @@ All of these great companies are built on or are building on GoChain!
 ## Fundraising
 
 * [PrimaBlock](https://primablock.com)
+* [SafeContracts](https://safecontracts.io/)
+
 
 ## Security Tokens
 
