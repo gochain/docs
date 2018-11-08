@@ -14,6 +14,7 @@ All of these great companies are built on or are building on GoChain!
 * [Job.com](https://job.com)
 * [Veritoken](https://veritoken.io/)
 * [MBYS](https://mbys.io/)
+* [LINKCHAIN](https://linkchain.supply/)
 
 ## Exchanges
 
