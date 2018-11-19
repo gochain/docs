@@ -49,6 +49,7 @@ All of these great companies are built on or are building on GoChain!
 
 ## Developer Tools
 
+* [Blockdaemon](https://blockdaemon.com)
 * [Esprezzo](https://esprezzo.io/)
 
 ## Are you building on GoChain?
