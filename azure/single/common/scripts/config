@@ -1,0 +1,18 @@
+[Eth]
+NetworkId = #NETWORKID
+
+[Eth.TxPool]
+NoLocals = true
+
+[Node]
+DataDir = "/gochain/node"
+HTTPModules = ["net", "web3", "eth", "shh"]
+WSModules = ["net", "web3", "eth", "shh"]
+
+[Node.P2P]
+StaticNodes = [
+  #NODES
+]
+TrustedNodes = [
+  #NODES
+]

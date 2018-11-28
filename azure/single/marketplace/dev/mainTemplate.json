@@ -52,22 +52,29 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_D4s_v3",
+      "defaultValue": "Standard_D2s_v3",
       "metadata": {
         "description": "Size of the virtual machine used for nodes"
       }
-    },        
+    },
     "networkId": {
       "type": "string",
       "metadata": {
         "description": "Network identifier for the private gochain network"
-      }         
+      }
     },
     "initialBalance": {
-      "type": "string",        
+      "type": "string",
       "defaultValue": "1000000000",
       "metadata": {
-          "description": "Initial account balance for admin account in the private gochain network"
+        "description": "Initial account balance for admin account in the private gochain network"
+      }
+    },
+    "nodesCount": {
+      "type": "string",
+      "defaultValue": "3",
+      "metadata": {
+        "description": "Number of nodes"
       }
     },
     "location": {
@@ -133,23 +140,31 @@
     {
       "apiVersion": "[variables('apiVersionPublicIPAddresses')]",
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[variables('publicIpAddressName')]",
+      "name": "[concat(variables('publicIpAddressName'),copyIndex())]",
       "location": "[parameters('location')]",
+      "copy": {
+        "name": "addressLoop",
+        "count": "[int(parameters('nodesCount'))]"
+      },
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[variables('dnsName')]"
+          "domainNameLabel": "[concat(variables('dnsName'),copyIndex())]"
         }
       }
     },
     {
       "apiVersion": "[variables('apiVersionNetworkInterfaces')]",
       "type": "Microsoft.Network/networkInterfaces",
-      "name": "[variables('nicName')]",
+      "name": "[concat(variables('nicName'),copyIndex())]",
       "location": "[parameters('location')]",
+      "copy": {
+        "name": "nicLoop",
+        "count": "[int(parameters('nodesCount'))]"
+      },
       "dependsOn": [
         "[concat('Microsoft.Network/virtualNetworks/', variables('vNet').name)]",
-        "[concat('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]",
+        "[concat('Microsoft.Network/publicIpAddresses/', concat(variables('publicIpAddressName'),copyIndex()))]",
         "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
       ],
       "properties": {
@@ -162,7 +177,7 @@
                 "id": "[variables('subnetRef')]"
               },
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIpAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', concat(variables('publicIpAddressName'),copyIndex()))]"
               }
             }
           }
@@ -246,8 +261,7 @@
       "name": "vmLinkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', variables('vNet').name)]",
-        "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+        "[concat('Microsoft.Network/virtualNetworks/', variables('vNet').name)]"
       ],
       "properties": {
         "mode": "Incremental",
@@ -259,11 +273,26 @@
           "authType": {
             "value": "[parameters('authType')]"
           },
+          "artifactsLocationURL": {
+            "value": "[parameters('_artifactsLocation')]"
+          },
+          "artifactsLocationUrlSasToken": {
+            "value": "[parameters('_artifactsLocationSasToken')]"
+          },
+          "networkId": {
+            "value": "[parameters('networkId')]"
+          },
+          "initialBalance": {
+            "value": "[parameters('initialBalance')]"
+          },
           "storagePerformance": {
             "value": "[parameters('vmStoragePerformance')]"
           },
           "nicName": {
             "value": "[variables('nicName')]"
+          },
+          "nodesCount": {
+            "value": "[parameters('nodesCount')]"
           },
           "vmSize": {
             "value": "[parameters('vmSize')]"
@@ -288,56 +317,7 @@
           }
         }
       }
-    },
-    {
-      "apiVersion": "[variables('apiVersionDeployments')]",
-      "name": "vmExtensionLinkedTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
-        "vmLinkedTemplate"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[uri(parameters('_artifactsLocation'), concat('nested/VMExtension.json', parameters('_artifactsLocationSasToken')))]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "authType": {
-            "value": "[parameters('authType')]"
-          },
-          "adminUsername": {
-            "value": "[parameters('adminUsername')]"
-          },
-          "artifactsLocationURL": {
-            "value": "[parameters('_artifactsLocation')]"
-          },
-          "artifactsLocationUrlSasToken": {
-            "value": "[parameters('_artifactsLocationSasToken')]"
-          },         
-          "networkId": {
-            "value": "[parameters('networkId')]"
-          },
-          "initialBalance": {
-            "value": "[parameters('initialBalance')]"
-          },          
-          "location": {
-            "value": "[parameters('location')]"
-          },
-          "dnsName": {
-            "value": "[variables('dnsName')]"
-          },
-          "fqdn": {
-            "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', variables('publicIpAddressName')), variables('apiVersionPublicIPAddresses')).dnsSettings.fqdn]"
-          }
-        }
-      }
     }
   ],
-  "outputs": {
-    "dnsName": {
-      "type": "string",
-      "value": "[reference(variables('publicIpAddressName')).dnsSettings.fqdn]"
-    } 
-  }
+  "outputs": {}
 }

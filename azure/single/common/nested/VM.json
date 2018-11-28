@@ -1,122 +1,205 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "authType": {
-        "type": "string",
-        "defaultValue": "password",
-        "allowedValues": [
-          "password",
-          "sshPublicKey"
-        ],
-        "metadata": {
-          "description": "Type of authentication to use on the Virtual Machine."
-        }
-      },
-      "storagePerformance": {
-        "type": "string",
-        "metadata": {
-          "description": "Storage performance level for the Virtual Machine."
-        }
-      },
-      "nicName": {
-        "type": "string",
-        "metadata": {
-          "description": "Network interface card name for the Virtual Machine."
-        }
-      },
-      "vmSize": {
-        "type": "string",
-        "metadata": {
-          "description": "Size of the Virtual Machine."
-        }
-      },
-      "adminUsername": {
-        "type": "string",
-        "metadata": {
-          "description": "User name for the Virtual Machine."
-        }
-      },
-      "adminPasswordOrKey": {
-        "type": "securestring",
-        "metadata": {
-          "description": "Password or ssh key for the Virtual Machine"
-        }
-      },
-      "ubuntuImage": {
-        "type": "object",
-        "metadata": {
-          "description": "Ubuntu operating system version for the Virtual Machine."
-        }
-      },
-      "dnsName": {
-        "type": "string",
-        "metadata": {
-          "description": "DNS name (prefix) of the Virtual Machine."
-        }
-      },
-      "nameInfix": {
-        "type": "string",
-        "metadata": {
-          "description": "Prefix for the Virtual Machine name"
-        }
-      },
-      "location": {
-        "type": "string",
-        "metadata": {
-          "description": "Location for the resources."
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "artifactsLocationUrl": {
+      "type": "string"
+    },
+    "artifactsLocationUrlSasToken": {
+      "type": "string"
+    },
+    "authType": {
+      "type": "string",
+      "defaultValue": "password",
+      "allowedValues": [
+        "password",
+        "sshPublicKey"
+      ],
+      "metadata": {
+        "description": "Type of authentication to use on the Virtual Machine."
       }
     },
-    "variables": {
-      "apiVersionVirtualMachine": "2018-06-01",
-      "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
-      "linuxConfiguration": {
-        "disablePasswordAuthentication": true,
-        "ssh": {
-          "publicKeys": [
+    "storagePerformance": {
+      "type": "string",
+      "metadata": {
+        "description": "Storage performance level for the Virtual Machine."
+      }
+    },
+    "nodesCount": {
+      "type": "string",
+      "defaultValue": "3",
+      "metadata": {
+        "description": "Number of nodes"
+      }
+    },
+    "nicName": {
+      "type": "string",
+      "metadata": {
+        "description": "Network interface card name for the Virtual Machine."
+      }
+    },
+    "vmSize": {
+      "type": "string",
+      "metadata": {
+        "description": "Size of the Virtual Machine."
+      }
+    },
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "User name for the Virtual Machine."
+      }
+    },
+    "adminPasswordOrKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password or ssh key for the Virtual Machine"
+      }
+    },
+    "ubuntuImage": {
+      "type": "object",
+      "metadata": {
+        "description": "Ubuntu operating system version for the Virtual Machine."
+      }
+    },
+    "dnsName": {
+      "type": "string",
+      "metadata": {
+        "description": "DNS name (prefix) of the Virtual Machine."
+      }
+    },
+    "nameInfix": {
+      "type": "string",
+      "metadata": {
+        "description": "Prefix for the Virtual Machine name"
+      }
+    },
+    "initialBalance": {
+      "type": "string"
+    },
+    "networkId": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "Location for the resources."
+      }
+    }
+  },
+  "variables": {
+    "storageAccountName": "[parameters('dnsName')]",
+    "apiVersionVirtualMachine": "2018-06-01",
+    "containerName": "gochain-container",
+    "sshKeyPath": "[concat('/home/',parameters('adminUsername'),'/.ssh/authorized_keys')]",
+    "linuxConfiguration": {
+      "disablePasswordAuthentication": true,
+      "ssh": {
+        "publicKeys": [
+          {
+            "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
+            "keyData": "[parameters('adminPasswordOrKey')]"
+          }
+        ]
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2018-07-01",
+      "location": "[parameters('location')]",
+      "kind": "BlobStorage",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "tags": {},
+      "dependsOn": [],
+      "properties": {
+        "accessTier": "Cool"
+      },
+      "resources": [
+        {
+          "type": "blobServices/containers",
+          "apiVersion": "2018-07-01",
+          "name": "[concat('default/', variables('containerName'))]",
+          "dependsOn": [
+            "[variables('storageAccountName')]"
+          ],
+          "properties": {
+            "publicAccess": "None"
+          }
+        }
+      ]
+    },
+    {
+      "apiVersion": "[variables('apiVersionVirtualMachine')]",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat(parameters('nameInfix'),copyIndex())]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]"
+      ],
+      "copy": {
+        "name": "extLoop",
+        "count": "[int(parameters('nodesCount'))]"
+      },
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmSize')]"
+        },
+        "osProfile": {
+          "computerName": "[concat(parameters('dnsName'), copyIndex())]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPasswordOrKey')]",
+          "linuxConfiguration": "[if(equals(parameters('authType'), 'password'), json('null'), variables('linuxConfiguration'))]"
+        },
+        "storageProfile": {
+          "imageReference": "[parameters('ubuntuImage')]",
+          "osDisk": {
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "[concat(parameters('storagePerformance'), '_LRS')]"
+            }
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
             {
-              "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
-              "keyData": "[parameters('adminPasswordOrKey')]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(parameters('nicName'), copyindex()))]"
             }
           ]
         }
       }
     },
-    "resources": [
-      {
-        "apiVersion": "[variables('apiVersionVirtualMachine')]",
-        "type": "Microsoft.Compute/virtualMachines",
-        "name": "[parameters('nameInfix')]",
-        "location": "[parameters('location')]",
-        "properties": {
-          "hardwareProfile": {
-            "vmSize": "[parameters('vmSize')]"
-          },
-          "osProfile": {
-            "computerName": "[parameters('dnsName')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPasswordOrKey')]",
-            "linuxConfiguration": "[if(equals(parameters('authType'), 'password'), json('null'), variables('linuxConfiguration'))]"
-          },
-          "storageProfile": {
-            "imageReference": "[parameters('ubuntuImage')]",
-            "osDisk": {
-              "createOption": "FromImage",
-              "managedDisk": {
-                "storageAccountType": "[concat(parameters('storagePerformance'), '_LRS')]"
-              }
-            }
-          },
-          "networkProfile": {
-            "networkInterfaces": [
-              {
-                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('nicName')))]"
-              }
-            ]
-          }
+    {
+      "apiVersion": "[variables('apiVersionVirtualMachine')]",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(concat(parameters('dnsName'), copyIndex()), '/newuserscript')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', concat(parameters('nameInfix'),copyIndex()))]"
+      ],
+      "copy": {
+        "name": "extLoop",
+        "count": "[int(parameters('nodesCount'))]"
+      },
+      "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": [
+            "[uri(parameters('artifactsLocationUrl'), concat('scripts/configure.sh', parameters('artifactsLocationUrlSasToken')))]"
+          ]
+        },
+        "protectedSettings": {
+          "commandToExecute": "[concat('/bin/bash configure.sh \"', parameters('adminUsername'), '\" \"',parameters('artifactsLocationUrl'), '\" \"', parameters('artifactsLocationUrlSasToken'), '\" \"', parameters('networkId'), '\" \"', parameters('nodesCount'), '\" \"', parameters('initialBalance'),'\" \"', parameters('dnsName'),'\" \"', variables('containerName'),'\" \"', listKeys(variables('storageAccountName'),'2017-10-01').keys[0].value, '\"')]"
         }
       }
-    ]
-  }
-  
+    }
+  ]
+}

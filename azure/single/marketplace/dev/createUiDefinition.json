@@ -45,7 +45,7 @@
           "regex": "^[a-z][a-z0-9-]{1,15}$",
           "validationMessage": "Name should be between 1 and 15 characters in length"
         }
-      }, 
+      },
       {
         "name": "adminCredentials",
         "type": "Microsoft.Compute.CredentialsCombo",
@@ -125,7 +125,7 @@
               "regex": "^[0-9]{4,10}$",
               "validationMessage": "Network ID should contains only numbers and must be from 4 to 10 length"
             }
-          },       
+          },
           {
             "name": "initialBalance",
             "type": "Microsoft.Common.TextBox",
@@ -136,6 +136,18 @@
               "required": true,
               "regex": "^[0-9]+$",
               "validationMessage": "Initial balance should be a number"
+            }
+          },
+          {
+            "name": "nodesCount",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Number of highly available nodes to create in the cluster",
+            "defaultValue": "3",
+            "toolTip": "Number of nodes",
+            "constraints": {
+              "required": true,
+              "regex": "^[1-9]{1}$",
+              "validationMessage": "Node count should be a one number"
             }
           }
         ]
@@ -151,6 +163,7 @@
       "vmSize": "[steps('size').vmSize]",
       "networkId": "[steps('settings').networkId]",
       "initialBalance": "[steps('settings').initialBalance]",
+      "nodesCount": "[steps('settings').nodesCount]",
       "location": "[location()]"
     }
   }
