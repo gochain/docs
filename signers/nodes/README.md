@@ -55,7 +55,8 @@ docker run --rm -v $PWD:/root gcr.io/gochain-core/gochain gochain --datadir /roo
 5. Create a file `.env` to set the required variables: (see [`example.env`](example.env) for more details and optional variables)
 ```
 GOCHAIN_ACCT=0x12345 # Use the address from step 3.
-NETSTATS_NAME="My Company Name"
+GOCHAIN_EXTRADATA="My Company Name" # Each signed block will have this permanently included.
+NETSTATS_NAME="My Company Name" # Display for netstats web interface.
 NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
 ```
 6. Launch `docker-compose`
