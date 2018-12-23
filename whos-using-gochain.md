@@ -1,6 +1,6 @@
 # Who's Using GoChain
 
-All of these great companies are built on or are building on GoChain!
+All of these great companies are built on or are building on GoChain! 
 
 ## Games
 
@@ -60,3 +60,5 @@ All of these great companies are built on or are building on GoChain!
 ## Are you building on GoChain?
 
 Are you building on GoChain and want to be on this list? Give us a pull request and add yourself.
+
+_Any reference made here linking to any person, or organization, or activities, products, or services related to such person or organization, or any linkages from this document to the web site of another party, do not constitute or imply the endorsement, recommendation, or favoring by GoChain Networks Inc. or any of its employees or contractors acting on its behalf.
