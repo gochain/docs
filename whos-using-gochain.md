@@ -58,7 +58,7 @@ All of these great companies are built on or are building on GoChain!
 * [Esprezzo](https://esprezzo.io/)
 
 
-_**Please Note:** Any reference made here linking to any person, or organization, or activities, products, or services related to such person or organization, or any linkages from this document to the web site of another party, do not constitute or imply the endorsement, recommendation, or favoring by GoChain Networks Inc. or any of its employees or contractors acting on its behalf._
+_**Please Note:** Any reference made here to any person, or organization, or activities, products, or services related to such person or organization, or any linkages from this document to the web site of another party, do not constitute or imply the endorsement, recommendation, or favoring by GoChain Networks Inc. or any of its employees or contractors acting on its behalf._
 
 ## Are you building on GoChain?
 
