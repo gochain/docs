@@ -9,21 +9,26 @@ All of these great companies are built on or are building on GoChain!
 
 ## Business / Enterprise
 
+* [ECOMI](https://ecomi.com/)
+* [LINKCHAIN](https://linkchain.supply/)
+* [MBYS](https://mbys.io/)
 * [Solaster](https://solaster.io)
+* [Apereum](http://www.apereum.com/)
 * [Etherprise](https://etherprise.io)
 * [Job.com](https://job.com)
 * [Veritoken](https://veritoken.io/)
-* [MBYS](https://mbys.io/)
-* [LINKCHAIN](https://linkchain.supply/)
-* [ECOMI](https://ecomi.com/)
 
 ## Exchanges
 
 * [Bittrex](https://bittrex.com)
 * [Binance](https://binance.com)
 * [KuCoin](https://kucoin.com)
-* [UpBit](http://upbit.com/)
-* [GoDDEX](https://goddex.exchange/)
+* [UpBit](http://upbit.com)
+* [CoinAll](http://coinall.com)
+* [DragonEx](https://dragonex.io)
+* [Bilaxy](https://bilaxy.com)
+* [GoDDEX](https://goddex.exchange)
+
 
 ## Wallets and Payment Tools
 
@@ -41,7 +46,7 @@ All of these great companies are built on or are building on GoChain!
 
 * [PrimaBlock](https://primablock.com)
 * [SafeContracts](https://safecontracts.io/)
-
+* [Paperstreet](https://www.paperstreet.vc/)
 
 ## Security Tokens
 
