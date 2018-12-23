@@ -54,6 +54,8 @@ All of these great companies are built on or are building on GoChain!
 
 ## Developer Tools
 
+
+* [Microsoft Azure](https://azure.microsoft.com/en-us/blog/gochain-blockchain-launch/)
 * [Blockdaemon](https://blockdaemon.com)
 * [Esprezzo](https://esprezzo.io/)
 
