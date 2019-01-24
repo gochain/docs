@@ -23,13 +23,13 @@ You can also use existing Ethereum tools:
 
 If you are developing smart contracts or dapps to deploy to GoChain, you'll find the information you need here.
 
-### Who's Using GoChain?
+### Who's Using GoChain
 
-There are many great projects developing or already deployed on GoChain, [check them out here](whos-using-gochain.md).
+There are many great projects developing or already deployed on GoChain, [check them out here](https://help.gochain.io/en/article/whos-using-gochain-wtr9u1/).
 
 ### Developing on GoChain
 
-* [GoChain TestNet Information](testnet/)
+* [GoChain TestNet Information](public-network/testnet/)
 * [How to Deploy a Smart Contract to GoChain in 5 Minutes](https://medium.com/gochain/how-to-deploy-a-smart-contract-in-5-minutes-bed2443be23c)
 * [Learn why GoChain fees are 7500x cheaper than Ethereum](https://medium.com/gochain/gochain-transaction-fees-are-at-least-7500x-less-than-ethereum-3b7060743717)
 
@@ -41,10 +41,12 @@ are:
 * GoChain TestNet - https://testnet-rpc.gochain.io
 * GoChain MainNet - https://rpc.gochain.io
 
-## Running a Node
+### Running a Public Network Node
 
-[Node Documentation](nodes)
+[Node Documentation](public-network/nodes/)
 
-### Authorized Signers
+## Private Networks
 
-[Authorized Signer Documentation](signers)
+If you'd like to run your own GoChain private blockchain network, click here. 
+
+[Learn why GoChain is the best option for an Ethereum/web3 compatible private network](https://medium.com/gochain/ethereum-vs-gochain-private-network-showdown-d094096e7d88).
