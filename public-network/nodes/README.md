@@ -1,6 +1,6 @@
 # Running a Node
 
-If you'd like someone else to setup and manage your GoChain node, please check out [Blockdeamon](https://blockdaemon.com/). With three clicks 
+If you'd like someone else to setup and manage your GoChain node, please check out [Blockdaemon](https://blockdaemon.com/). With three clicks 
 you'll have a node up and running and they'll make sure it stays running for you.
 
 If you want to do it yourself, please continue below.
