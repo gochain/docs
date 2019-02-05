@@ -2,9 +2,28 @@
 
 You can deploy GoChain in a private environment for the most optimized, stable 100% Ethereum compatible private blockchain.
 
-## On Your Own Hardware
+## Setting up a Private Network
 
-See [/nodes/custom](/nodes/custom) for more information.
+You can run your own private GoChain network on your own hardware or on a cloud provider.
+
+## On the Cloud
+
+### Microsoft Azure
+
+You can start a network on Azure with just a couple of clicks by choosing GoChain in the Azure Marketplace.
+
+* [Single Node Developer Edition](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/gopath.gochain-single?tab=Overview)
+* [Multi-node Enterprise Edition](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/gopath.gochain-multi?tab=Overview)
+
+See [Microsoft's blog announcement](https://azure.microsoft.com/en-us/blog/gochain-blockchain-launch/).
+
+### AWS
+
+Use our [AWS Cloudformation template](aws/) to get started quickly.
+
+### Your own hardware
+
+See [custom/](custom/) for more information.
 
 ## Testing Your Deployment
 
