@@ -51,4 +51,4 @@ If you'd like to run your own GoChain private blockchain network, click here.
 
 [Learn why GoChain is the best option for an Ethereum/web3 compatible private network](https://medium.com/gochain/ethereum-vs-gochain-private-network-showdown-d094096e7d88).
 
-Learn how to [deploy your own GoChain network here](private-chains).
+Learn how to [deploy your own GoChain network here](private-networks).
