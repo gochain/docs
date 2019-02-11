@@ -1,4 +1,4 @@
-![GoChain Logo](color_logo_transparent.png)
+<a href="https://gochain.io"><img src="color_logo_transparent.png" width="480"></a>
 
 # GoChain Docs
 
