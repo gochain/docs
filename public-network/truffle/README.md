@@ -5,7 +5,7 @@ You can use [Truffle Framework](https://truffleframework.com/) like you normally
 Here is an example `truffle.js` config file that uses GoChain:
 
 ```js
-const privateKey = process.env.TRUFFLE_PRIVATE_KEY;
+const privateKey = process.env.WEB3_PRIVATE_KEY;
 const PrivateKeyProvider = require("truffle-privatekey-provider");
 const Web3 = require('web3');
 
