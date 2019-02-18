@@ -22,9 +22,11 @@ Since GoChain is 100% Ethereum compatible, all the Ethereum developer tools will
 ## Public Network
 
 The GoChain public network is the best performing web3/Ethereum compatible blockchain on the market. 
+
 - Higher throughput volumes: 1300 tx/s
 - Faster transaction times: 5 second blocks
 - Lower fees: >7500x cheaper than Ethereum
+
 Give it a try for yourself to experience the difference.
 
 ### Network RPC URLs
