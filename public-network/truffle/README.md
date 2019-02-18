@@ -1,8 +1,16 @@
 # Using Truffle Framework with GoChain
 
-You can use [Truffle Framework](https://truffleframework.com/) like you normally do and simply update the configuration file to point to a GoChain network.
+You can use [Truffle Framework](https://truffleframework.com/) like you normally do and simply update your `truffle-config.js` configuration file to point to a GoChain network.
 
-Here is an example `truffle.js` config file that uses GoChain:
+Below is an example `truffle-config.js` config file that uses GoChain. To use this, first:
+
+```sh
+npm install truffle-privatekey-provider
+# Set a private key to use that has some GO in its account
+export WEB3_PRIVATE_KEY=0xABCD...
+```
+
+Then you can use this:
 
 ```js
 const privateKey = process.env.WEB3_PRIVATE_KEY;
@@ -33,13 +41,4 @@ module.exports = {
 };
 ```
 
-To use the above file, you'll have to do the following first:
-
-```sh
-npm install truffle-privatekey-provider
-# Set a private key to use that has some GO in its account
-export WEB3_PRIVATE_KEY=0xABCD...
-```
-
-Then you can simply use Truffle as you always do, but deploy to GoChain!
-
+Then just use Truffle as you always do, but deploy to GoChain!
