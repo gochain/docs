@@ -21,7 +21,11 @@ Since GoChain is 100% Ethereum compatible, all the Ethereum developer tools will
 
 ## Public Network
 
-The GoChain public network is the best performing web3/Ethereum compatible blockchain on the market, with much higher throughput volumes, much faster transaction times and much lower fees. Give it a try for yourself to experience the difference.
+The GoChain public network is the best performing web3/Ethereum compatible blockchain on the market. 
+- Higher throughput volumes: 1300 tx/s
+- Faster transaction times: 5 second blocks
+- Lower fees: >7500x cheaper than Ethereum
+Give it a try for yourself to experience the difference.
 
 ### Network RPC URLs
 
@@ -37,7 +41,7 @@ are:
 
 ## Private Networks
 
-GoChain is highly optimized for private blockchain networks and has been battle tested in wild for over a year.
+GoChain is highly optimized for private blockchain networks and has been battle tested in the wild for over a year.
 
 [Learn why GoChain is the best option for an Ethereum/web3 compatible private network](https://medium.com/gochain/ethereum-vs-gochain-private-network-showdown-d094096e7d88).
 
