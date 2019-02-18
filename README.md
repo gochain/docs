@@ -4,34 +4,28 @@
 
 Official GoChain documentation.
 
-## GoChain Users
-
-If you want to send GO tokens or interact with smart contracts on GoChain, this section is for you.
-
-* [GoChain Wallet](https://wallet.gochain.io)
-* [Block Explorer](https://explorer.gochain.io)
-
-You can also use existing Ethereum tools:
-
-* [MyEtherWallet](https://medium.com/gochain/gochain-is-now-available-on-myetherwallet-e392c7f5c9a2)
-* [MyCrypto](https://medium.com/gochain/gochain-is-now-on-mycrypto-com-144a52c7d5ce)
-* [Trust Wallet](https://medium.com/gochain/trust-wallet-now-fully-supports-gochain-including-gochain-based-tokens-assets-2ba28a080c2d)
-* [TurboWallet](https://turbowallet.io)
-* [How to use GoChain with MetaMask](https://medium.com/gochain/how-to-use-gochain-with-metamask-23a258ae39c5)
-
 ## Smart Contract / DApp Developers
 
 If you are developing smart contracts or dapps to deploy to GoChain, you'll find the information you need here.
 
-### Who's Using GoChain
-
-There are many great projects developing or already deployed on GoChain, [check them out here](https://help.gochain.io/en/article/whos-using-gochain-wtr9u1/).
-
 ### Developing on GoChain
 
-* [GoChain TestNet Information](public-network/testnet/)
-* [How to Deploy a Smart Contract to GoChain in 5 Minutes](https://medium.com/gochain/how-to-deploy-a-smart-contract-in-5-minutes-bed2443be23c)
+Since GoChain is 100% Ethereum compatible, all the Ethereum developer tools will work including web3.js, Truffle Framework, etc. To use those tools, simply point them to a GoChain network, more details on how to do that below.
+
+* [Building, deploying and interacting with contracts using web3 CLI](https://github.com/gochain-io/web3) -- **Recommended**
+* [How to deploy to GoChain with Truffle Framework](public-network/truffle/)
+* [How to deploy to GoChain using MyEtherWallet](https://medium.com/gochain/how-to-deploy-a-smart-contract-to-gochain-40de78d4d85a)
+* [How to deploy to Gochain using Remix](https://medium.com/gochain/how-to-deploy-a-smart-contract-to-gochain-40de78d4d85a)
+* [How to deploy to GoChain using Visual Studio Code and the GoChain Wallet](https://medium.com/gochain/how-to-deploy-a-smart-contract-in-5-minutes-bed2443be23c)
 * [Learn why GoChain fees are 7500x cheaper than Ethereum](https://medium.com/gochain/gochain-transaction-fees-are-at-least-7500x-less-than-ethereum-3b7060743717)
+
+## Public Network
+
+The GoChain public network is the best performing web3/Ethereum compatible blockchain on the market. 
+- Higher throughput volumes: 1300 tx/s
+- Faster transaction times: 5 second blocks
+- Lower fees: >7500x cheaper than Ethereum
+Give it a try for yourself to experience the difference.
 
 ### Network RPC URLs
 
@@ -47,8 +41,15 @@ are:
 
 ## Private Networks
 
-If you'd like to run your own GoChain private blockchain network, click here. 
+GoChain is highly optimized for private blockchain networks and has been battle tested in the wild for over a year.
 
 [Learn why GoChain is the best option for an Ethereum/web3 compatible private network](https://medium.com/gochain/ethereum-vs-gochain-private-network-showdown-d094096e7d88).
 
-Learn how to [deploy your own GoChain network here](private-networks).
+Learn how to [setup your own GoChain network here](private-networks).
+
+## For More Information
+
+See our help desk site for more information and if you don't find it there, you can ask us directly on the help site.
+
+[Help Desk](https://help.gochain.io)
+
