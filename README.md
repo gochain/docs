@@ -13,6 +13,7 @@ If you are developing smart contracts or dapps to deploy to GoChain, you'll find
 Since GoChain is 100% Ethereum compatible, all the Ethereum developer tools will work including web3.js, Truffle Framework, etc. To use those tools, simply point them to a GoChain network, more details on how to do that below.
 
 * [Building, deploying and interacting with contracts using web3 CLI](https://github.com/gochain-io/web3) -- **Recommended**
+* [How to deploy OpenZeppelin token contracts super easily](https://medium.com/gochain/the-easiest-way-to-deploy-an-openzeppelin-smart-contract-no-truffle-required-d248d4c3835a)
 * [How to deploy to GoChain with Truffle Framework](public-network/truffle/)
 * [How to deploy to GoChain using MyEtherWallet](https://medium.com/gochain/how-to-deploy-a-smart-contract-to-gochain-40de78d4d85a)
 * [How to deploy to Gochain using Remix](https://medium.com/gochain/how-to-deploy-a-smart-contract-to-gochain-40de78d4d85a)
