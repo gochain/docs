@@ -26,4 +26,4 @@ NETSTATS_IMAGE=my_custom_image
 
 - Netstats: http://localhost:80
 - Explorer: http://localhost:8000
-- RPC Proxy: http://localhost:8080
+- RPC Proxy: http://localhost:8545
