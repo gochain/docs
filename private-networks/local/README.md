@@ -25,5 +25,5 @@ NETSTATS_IMAGE=my_custom_image
 ## Web Interfaces
 
 - Netstats: http://localhost:80
-- Explorer: http://localhost:8000
+- Explorer: http://localhost:8080
 - RPC Proxy: http://localhost:8545
