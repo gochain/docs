@@ -3,13 +3,13 @@ services:
   node:
     container_name: node
     image: gcr.io/gochain-core/gochain:${GOCHAIN_IMAGE:-latest}
-    ports:
-      # Netstats
-      - "80:80"
-      # Proxy
-      - "8545:8000"
-      # Explorer
-      - "8080:8080"
+    # ports:
+    #   # Netstats
+    #   - "80:80"
+    #   # Proxy
+    #   - "8545:8000"
+    #   # Explorer
+    #   - "8080:8080"
     command: gochain --dev --rpc --metrics --pprof --netstats node:ironsecret@localhost
     restart: always
     networks:
@@ -25,6 +25,8 @@ services:
     restart: always
     networks:
       - chainnet
+    ports:
+      - "8081:80"
   proxy:
     container_name: proxy
     image: gcr.io/gochain-core/rpc-proxy:${RPC_PROXY_IMAGE:-latest}
@@ -33,7 +35,9 @@ services:
     command: -port 8000 -url http://localhost:8545 -allow "eth_getCode,clique_getSnapshotAtHash,clique_getSignersAtHash,clique_getVotersAtHash,clique_getSnapshot,clique_getSigners,clique_getVoters,eth_chainId,eth_call,eth_blockNumber,eth_getBalance,eth_sendRawTransaction,eth_gasPrice,eth_estimateGas,net_version,eth_getTransaction,eth_getTransactionReceipt,eth_getTransactionCount,eth_getFilterChanges,net_listening,eth_getBlockByHash,eth_uninstallFilter,eth_getBlockByNumber,eth_newBlockFilter,eth_newPendingTransactionFilter,eth_totalSupply,eth_getLogs,eth_getStorageAt" -rpm 10000
     restart: always
     networks:
-      - chainnet  
+      - chainnet
+    ports:
+      - "8545:8000"
   mongodb:
     container_name: "mongodb"
     image: mongo
@@ -45,7 +49,7 @@ services:
     command: mongod --smallfiles --logpath=/dev/null # --quiet
     restart: always
     networks:
-      - chainnet  
+      - chainnet
   explorer:
     container_name: explorer
     image: gcr.io/gochain-core/explorer:${EXPLORER_IMAGE:-latest}
@@ -55,7 +59,9 @@ services:
     command: "server -d /explorer/ -m localhost:27017 -u http://localhost:8545"
     restart: always
     networks:
-      - chainnet  
+      - chainnet
+    ports:
+      - "8080:8080"
   grabber:
     container_name: grabber
     image: gcr.io/gochain-core/explorer:${EXPLORER_IMAGE:-latest}
