@@ -19,7 +19,7 @@ services:
     image: gcr.io/gochain-core/netstats:${NETSTATS_IMAGE:-latest}
     environment:
       - PORT=80
-      - WS_SECRET=ironsecret
+      - WS_SECRET=CHANGETHIS!!!
     depends_on:
       - node
     restart: always
@@ -77,3 +77,4 @@ services:
 networks:
   chainnet:
     driver: bridge
+
