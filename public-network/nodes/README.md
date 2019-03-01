@@ -66,7 +66,7 @@ docker logs -f node
 - Follow Logs: `docker logs -f --tail 100 node`
 - Restart Container: `docker-compose restart node`
 - Restart All: `docker-compose down && docker-compose up -d`
-- Console Attach: `docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node attach`
+- Console Attach: `docker exec -it node gochain --datadir /gochain/node attach`
 - Update image: `docker-compose pull`
 
 ### Console Commands
