@@ -6,6 +6,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | --- | --------------- | --- |
 | [**Aquatica Submarines**](https://aquaticasubmarines.com/) | Sydney, Australia | [`0x03771ec9c739c2767be58256def7564678985c78`](https://explorer.gochain.io/addr/0x03771ec9c739c2767be58256def7564678985c78) |
 | [**Blockox Fund**](http://blockox.vc/) | Singapore | [`0x1324567409b771d09a6abdb4af249b7fe2de45fc`](https://explorer.gochain.io/addr/0x1324567409b771d09a6abdb4af249b7fe2de45fc) |
+| [**BluNomad**](https://blunomad.org/) | Montreal, Canada | [`0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38`](https://explorer.gochain.io/addr/0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38) |
 | [**Cloud Carib**](https://www.cloudcarib.com/) | Nassau, Bahamas | [`0xe1200caf0d92018fe111943faf91a0c5f6db34d1`](https://explorer.gochain.io/addr/0xe1200caf0d92018fe111943faf91a0c5f6db34d1) |
 | [**GoChain**](https://gochain.io)  | New York, United States | [`0xed7f2e81b0264177e0df8f275f97fd74fa51a896`](https://explorer.gochain.io/addr/0xed7f2e81b0264177e0df8f275f97fd74fa51a896) |
 | | San Francisco, United States | [`0x3ad14430951aba12068a8167cebe3ddd57614432`](https://explorer.gochain.io/addr/0x3ad14430951aba12068a8167cebe3ddd57614432) |
