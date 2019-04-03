@@ -42,6 +42,10 @@ are:
 
 [Node Documentation](public-network/nodes/)
 
+### Integrating GoChain into Wallets
+
+[Click here](public-network/README.md) for all the information you'll need for doing these integrations.
+
 ## Private Networks
 
 GoChain is highly optimized for private blockchain networks and has been battle tested in the wild for over a year.
