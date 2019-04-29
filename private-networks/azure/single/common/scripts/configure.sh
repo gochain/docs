@@ -99,7 +99,7 @@ sudo -H -u $AZUREUSER bash -c "blobfuse ${HOMEDIR}/shared --tmp-path=/tmp/blobfu
 #########################################
 echo "Generating account: $(date)" >> ${HOMEDIR}/output.log
 date +%s | sha256sum | base64 | head -c 32 > $HOMEDIR/password.txt
-ACCOUNT_ID=$(sudo docker run -v $PWD:/root gochain/gochain gochain --datadir /root/node --password /root/password.txt account new | awk -F '[{}]' '{print $2}')
+ACCOUNT_ID=$(sudo docker run -v $PWD:/root gcr.io/gochain-core/gochain gochain --datadir /root/node --password /root/password.txt account new | awk -F '[{}]' '{print $2}')
 
 echo "GOCHAIN_ACCT=0x$ACCOUNT_ID" > $HOMEDIR/.env
 echo "GOCHAIN_NETWORK=$NETWORK_ID" >> $HOMEDIR/.env
@@ -134,14 +134,14 @@ mv $HOMEDIR/genesis $HOMEDIR/genesis.json
 # ###########################
 
 sudo rm -rf $PWD/node/GoChain
-docker run --rm -v $PWD:/gochain -w /gochain gochain/gochain gochain --datadir /gochain/node init genesis.json
+docker run --rm -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node init genesis.json
 
 # ###########################
 # # Generate config
 # ###########################
 
 echo "console.log(admin.nodeInfo.enode);" > $HOMEDIR/node/enode.js
-ENODE_OUTPUT=$(docker run -v $PWD:/root gochain/gochain gochain --datadir /root/node js /root/node/enode.js)
+ENODE_OUTPUT=$(docker run -v $PWD:/root gcr.io/gochain-core/gochain gochain --datadir /root/node js /root/node/enode.js)
 ENODE=${ENODE_OUTPUT:0:137}
 IP_ACCOUNT=$(ifconfig eth0 | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*')
 sudo -H -u $AZUREUSER bash -c "echo '  \"${ENODE}${IP_ACCOUNT}:30303\",' >> ${HOMEDIR}/shared/${ACCOUNT_ID}.enode"
