@@ -20,7 +20,7 @@ const Web3 = require('web3');
 module.exports = {
   networks: {
     development: {
-      provider: () => new PrivateKeyProvider(privateKey, "https://localhost:8545"),
+      provider: () => new PrivateKeyProvider(privateKey, "http://localhost:8545"),
       host: "127.0.0.1",
       port: 8545,
       network_id: "*" // Match any network id
