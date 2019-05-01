@@ -1,6 +1,6 @@
 # Usign web3.py
 
-Web3.py is a python library for web3 blockchains. 
+[Web3.py](https://github.com/ethereum/web3.py) is a python library for web3 blockchains. 
 
 To use it with GoChain, set the following environment variable:
 
