@@ -18,6 +18,7 @@ services:
     environment:
       - PORT=80
       - WS_SECRET=ironsecret
+      - NETWORK_NAME=localnet
     network_mode: "service:node"
     depends_on:
       - node
