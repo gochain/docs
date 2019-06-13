@@ -1,5 +1,7 @@
 # Running a Node
 
+**IMPORTANT**: Please [sign up for this mailing list](https://groups.google.com/a/gochain.io/forum/#!forum/node-announcements) to get critical announcements that will require you to upgrade your node. These emails will be rare so you won't have to worry about getting too much email.
+
 If you'd like someone else to setup and manage your GoChain node, please check out [Blockdaemon](https://blockdaemon.com/). With three clicks 
 you'll have a node up and running and they'll make sure it stays running for you.
 
