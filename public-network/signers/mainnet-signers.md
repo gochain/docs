@@ -13,6 +13,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | | San Francisco, United States | [`0x3ad14430951aba12068a8167cebe3ddd57614432`](https://explorer.gochain.io/addr/0x3ad14430951aba12068a8167cebe3ddd57614432) |
 | | New York, United States | [`0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea`](https://explorer.gochain.io/addr/0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea) |
 | | San Francisco, United States | [`0xf6290b7f9f871d21317acc259f2ae23c0aa69c73`](https://explorer.gochain.io/addr/0xf6290b7f9f871d21317acc259f2ae23c0aa69c73) |
+| [**GoChange**](https://gochange.world) | Zürich, Switzerland | [`0x70563fa9fedf440a8f2f4a84cb3189a89eb81d44`](https://explorer.gochain.io/addr/0x70563fa9fedf440a8f2f4a84cb3189a89eb81d44) |
 | [**ICOSyndicate**](https://icosyndicate.org/) | Amsterdam, Netherlands | [`0x95dddf0006c6a2cae3d719efda527ce7ff8bef9c`](https://explorer.gochain.io/addr/0x95dddf0006c6a2cae3d719efda527ce7ff8bef9c) |
 | [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [`0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5`](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
 | [**Ledger Leap**](https://ledgerleap.com/) | Ohio, United States | [`0x4707bae73acb61452afd3827263d8fce236dc0ee`](https://explorer.gochain.io/addr/0x4707bae73acb61452afd3827263d8fce236dc0ee) |
