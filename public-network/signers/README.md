@@ -2,7 +2,7 @@
 
 ## What is a GoChain Signer?
 
-A GoChain signer is a company/entity that is given the privilege of signing blocks in the GoChain network based on our Proof of Reputation consensus. 
+A GoChain signer is a company/entity that is given the privilege of signing blocks in the GoChain network based on our Proof of Reputation consensus.
 
 ## What’s in it for a Signer?
 
@@ -15,7 +15,7 @@ A GoChain signer is a company/entity that is given the privilege of signing bloc
 
 ## Company Requirements
 
-To get accepted as a GoChain signer, you must meet some minimum requirements. All of these are compared with other nodes in the network to decide if your company would be a good fit. 
+To get accepted as a GoChain signer, you must meet some minimum requirements. All of these are compared with other nodes in the network to decide if your company would be a good fit.
 
 * Annual recurring revenue
 * Number of employees
@@ -51,4 +51,19 @@ minimum SLA requirements:
 If a node cannot keep up with these requirements, they may be immediately voted out.
 
 If a signer must be removed for other reasons, such as a more reputable company coming online, there
-will be 60 day notice before being voted out. Signers must also give 60 days before voluntarily leaving. 
+will be 60 day notice before being voted out. Signers must also give 60 days before voluntarily leaving.
+
+## Node Signer Company Requirements
+
+* 10+ people as full time employees.
+* 1MM+ in yearly revenue.
+* Actively building, researching, or contributing to blockchain and education in the broader marketplace.
+* Stated and implemented purpose and use for GO collected from signing on GoChain’s mainnet.
+* Designated representative to oversee the correct implementation, and operation of the signing node, as well as any general contributions to GoChain as a business previously agreed to by either party, or any concerns that arise at the time of engagement and thenceforth.
+
+## Potential Disqualifications for Removal from Network
+
+* Generally malicious and/or illicit business activity.
+* Disparaging remarks or presentations of GoChain, blockchain (or crypto currency in general) to the general marketplace, GoChain clients, business partners, or competitive businesses, and protocols.
+* Actively encouraging companies to build on a different blockchain protocol or to use a different blockchain consultant.
+* A lack of consistent and transparent communication with the GoChain team regarding company mission, benchmarks, and direction.
