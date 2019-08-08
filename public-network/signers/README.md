@@ -65,5 +65,5 @@ will be a 30 day grace period before being voted out. Signers must also give 30 
 
 * Generally malicious and/or illicit business activity.
 * Disparaging remarks or presentations of GoChain, blockchain (or crypto currency in general) to the general marketplace, GoChain clients, business partners, or competitive businesses, and protocols.
-* Actively encouraging companies to build on a different blockchain protocol or to use a different blockchain consultant.
+* Actively encouraging companies to build on a different blockchain protocol.
 * A lack of consistent and transparent communication with the GoChain team regarding company mission, benchmarks, and direction.
