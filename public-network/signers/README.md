@@ -51,7 +51,7 @@ minimum SLA requirements:
 If a node cannot keep up with these requirements, they may be immediately voted out.
 
 If a signer must be removed for other reasons, such as a more reputable company coming online, there
-will be 60 day notice before being voted out. Signers must also give 60 days before voluntarily leaving.
+will be a 30 day grace period before being voted out. Signers must also give 30 days notice before voluntarily leaving.
 
 ## Node Signer Company Requirements
 
