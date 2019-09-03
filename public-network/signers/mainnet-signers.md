@@ -5,7 +5,6 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | Name | Location| Signing Address |
 | --- | --------------- | --- |
 | [**Aquatica Submarines**](https://aquaticasubmarines.com/) | Sydney, Australia | [`0x03771ec9c739c2767be58256def7564678985c78`](https://explorer.gochain.io/addr/0x03771ec9c739c2767be58256def7564678985c78) |
-| [**Blockox Fund**](http://blockox.vc/) | Singapore | [`0x1324567409b771d09a6abdb4af249b7fe2de45fc`](https://explorer.gochain.io/addr/0x1324567409b771d09a6abdb4af249b7fe2de45fc) |
 | [**BluNomad**](https://blunomad.org/) | Montreal, Canada | [`0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38`](https://explorer.gochain.io/addr/0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38) |
 | [**Cloud Carib**](https://www.cloudcarib.com/) | Nassau, Bahamas | [`0xe1200caf0d92018fe111943faf91a0c5f6db34d1`](https://explorer.gochain.io/addr/0xe1200caf0d92018fe111943faf91a0c5f6db34d1) |
 | [**DISH Network**](https://www.dish.com/) | Ashburn, United States | [`0x01ce3a61cb52a10d55671dd5de5a0f578a5e07c1`](https://explorer.gochain.io/addr/0x01ce3a61cb52a10d55671dd5de5a0f578a5e07c1) |
@@ -14,13 +13,8 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | | New York, United States | [`0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea`](https://explorer.gochain.io/addr/0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea) |
 | | San Francisco, United States | [`0xf6290b7f9f871d21317acc259f2ae23c0aa69c73`](https://explorer.gochain.io/addr/0xf6290b7f9f871d21317acc259f2ae23c0aa69c73) |
 | [**GoChange**](https://gochange.world) | Zürich, Switzerland | [`0x70563fa9fedf440a8f2f4a84cb3189a89eb81d44`](https://explorer.gochain.io/addr/0x70563fa9fedf440a8f2f4a84cb3189a89eb81d44) |
-| [**ICOSyndicate**](https://icosyndicate.org/) | Amsterdam, Netherlands | [`0x95dddf0006c6a2cae3d719efda527ce7ff8bef9c`](https://explorer.gochain.io/addr/0x95dddf0006c6a2cae3d719efda527ce7ff8bef9c) |
 | [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [`0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5`](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
-| [**Ledger Leap**](https://ledgerleap.com/) | Ohio, United States | [`0x4707bae73acb61452afd3827263d8fce236dc0ee`](https://explorer.gochain.io/addr/0x4707bae73acb61452afd3827263d8fce236dc0ee) |
-| [**Primablock**](https://primablock.com/) | Paris, France | [`0x22d68b3bf15b37605c29e2477ef55729593cf40a`](https://explorer.gochain.io/addr/0x22d68b3bf15b37605c29e2477ef55729593cf40a) |
 | [**Procurious**](https://www.procurious.com/) | Netherlands | [`0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea`](https://explorer.gochain.io/addr/0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea) |
-| [**SafeContracts**](https://safecontracts.io) | Sao Paulo, Brazil | [`0x76c8b15940c5b0775389d4e6adb854182930a0ee`](https://explorer.gochain.io/addr/0x76c8b15940c5b0775389d4e6adb854182930a0ee) |
-| [**SheGO**](http://shego.org/) | Dublin, Ireland | [`0x4ed78f888e3d8f9f50e3f23e0ff2cf55550015bd`](https://explorer.gochain.io/addr/0x4ed78f888e3d8f9f50e3f23e0ff2cf55550015bd) |
 | [**Sling TV**](https://www.sling.com/) | San Jose, United States | [`0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d`](https://explorer.gochain.io/addr/0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d) |
 | [**The Him**](http://www.thehimmusic.com/) | Netherlands | [`0xd707552e5cc8e894d76fd0c82eb368c2f3a4af1a`](https://explorer.gochain.io/addr/0xd707552e5cc8e894d76fd0c82eb368c2f3a4af1a) |
 | [**Warner BP**](https://warnerbusinesspark.ca/) | Toronto, Canada | [`0x48c67d87cd7d716ec044dbe33a0152557bf86062`](https://explorer.gochain.io/addr/0x48c67d87cd7d716ec044dbe33a0152557bf86062) |
