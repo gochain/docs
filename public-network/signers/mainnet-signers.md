@@ -8,6 +8,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**BluNomad**](https://blunomad.org/) | Montreal, Canada | [`0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38`](https://explorer.gochain.io/addr/0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38) |
 | [**Cloud Carib**](https://www.cloudcarib.com/) | Nassau, Bahamas | [`0xe1200caf0d92018fe111943faf91a0c5f6db34d1`](https://explorer.gochain.io/addr/0xe1200caf0d92018fe111943faf91a0c5f6db34d1) |
 | [**DISH Network**](https://www.dish.com/) | Ashburn, United States | [`0x01ce3a61cb52a10d55671dd5de5a0f578a5e07c1`](https://explorer.gochain.io/addr/0x01ce3a61cb52a10d55671dd5de5a0f578a5e07c1) |
+| [**Fins Attached**](https://www.finsattached.org/) | Bangalore, India | [`0x8846359af59b723ab4c540456251b9c3fe2f269d`](https://explorer.gochain.io/addr/0x8846359af59b723ab4c540456251b9c3fe2f269d) |
 | [**GoChain**](https://gochain.io)  | New York, United States | [`0xed7f2e81b0264177e0df8f275f97fd74fa51a896`](https://explorer.gochain.io/addr/0xed7f2e81b0264177e0df8f275f97fd74fa51a896) |
 | | San Francisco, United States | [`0x3ad14430951aba12068a8167cebe3ddd57614432`](https://explorer.gochain.io/addr/0x3ad14430951aba12068a8167cebe3ddd57614432) |
 | | New York, United States | [`0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea`](https://explorer.gochain.io/addr/0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea) |
