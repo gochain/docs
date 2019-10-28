@@ -13,7 +13,6 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | | San Francisco, United States | [`0x3ad14430951aba12068a8167cebe3ddd57614432`](https://explorer.gochain.io/addr/0x3ad14430951aba12068a8167cebe3ddd57614432) |
 | | New York, United States | [`0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea`](https://explorer.gochain.io/addr/0x3729d2e93e8037f87a2c9afe34cb84b7069e4dea) |
 | | San Francisco, United States | [`0xf6290b7f9f871d21317acc259f2ae23c0aa69c73`](https://explorer.gochain.io/addr/0xf6290b7f9f871d21317acc259f2ae23c0aa69c73) |
-| [**GoChange**](https://gochange.world) | Zürich, Switzerland | [`0x70563fa9fedf440a8f2f4a84cb3189a89eb81d44`](https://explorer.gochain.io/addr/0x70563fa9fedf440a8f2f4a84cb3189a89eb81d44) |
 | [**GoPath**](https://gopath.io) | New York, United States | [`0xf7678aa7f42bc017f3d6011ca27aed400647960d`](https://explorer.gochain.io/addr/0xf7678aa7f42bc017f3d6011ca27aed400647960d) |
 | [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [`0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5`](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
 | [**Procurious**](https://www.procurious.com/) | Netherlands | [`0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea`](https://explorer.gochain.io/addr/0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea) |
