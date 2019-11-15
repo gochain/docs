@@ -17,5 +17,4 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [`0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5`](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
 | [**Procurious**](https://www.procurious.com/) | Netherlands | [`0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea`](https://explorer.gochain.io/addr/0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea) |
 | [**Sling TV**](https://www.sling.com/) | San Jose, United States | [`0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d`](https://explorer.gochain.io/addr/0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d) |
-| [**The Him**](http://www.thehimmusic.com/) | Netherlands | [`0xd707552e5cc8e894d76fd0c82eb368c2f3a4af1a`](https://explorer.gochain.io/addr/0xd707552e5cc8e894d76fd0c82eb368c2f3a4af1a) |
 | [**Warner BP**](https://warnerbusinesspark.ca/) | Toronto, Canada | [`0x48c67d87cd7d716ec044dbe33a0152557bf86062`](https://explorer.gochain.io/addr/0x48c67d87cd7d716ec044dbe33a0152557bf86062) |
