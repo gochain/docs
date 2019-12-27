@@ -69,6 +69,7 @@ docker logs -f node
 - Restart Container: `docker-compose restart node`
 - Restart All: `docker-compose down && docker-compose up -d`
 - Console Attach: `docker exec -it node gochain --datadir /gochain/node attach`
+- Console Execute: `docker exec -t node gochain --datadir /gochain/node attach --exec 'admin.nodeInfo.enode'`
 - Update image: `docker-compose pull`
 
 ### Console Commands
@@ -76,7 +77,7 @@ docker logs -f node
 - Enode: `admin.nodeInfo.enode`
 - Balance: `eth.getBalance('0xabcd')`
 - Coinbase Balance (rewards): `eth.getBalance(eth.coinbase)` 
-- Send Transaction (transfer rewards): `eth.sendTransaction({from:eth.coinbase,to:'0xabcd',value:1000000000000000000})`
+- Send Transaction (transfer rewards): `eth.sendTransaction({from:eth.coinbase,to:'0xabcd',value:web3.toWei(1,"ether")})`
 
 More info on the console is available here: https://github.com/ethereum/go-ethereum/wiki/JavaScript-Console
 
