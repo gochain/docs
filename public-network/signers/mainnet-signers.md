@@ -15,6 +15,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | | San Francisco, United States | [`0xf6290b7f9f871d21317acc259f2ae23c0aa69c73`](https://explorer.gochain.io/addr/0xf6290b7f9f871d21317acc259f2ae23c0aa69c73) |
 | [**GoPath**](https://gopath.io) | New York, United States | [`0xf7678aa7f42bc017f3d6011ca27aed400647960d`](https://explorer.gochain.io/addr/0xf7678aa7f42bc017f3d6011ca27aed400647960d) |
 | [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [`0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5`](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
+| [**Lenovo**](https://www.lenovo.com/) | Whittier, United States | [`0x201631d58922ebdd1493dcfb0bedfb92a9e5b423`](https://explorer.gochain.io/addr/0x201631d58922ebdd1493dcfb0bedfb92a9e5b423) |
 | [**Procurious**](https://www.procurious.com/) | Netherlands | [`0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea`](https://explorer.gochain.io/addr/0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea) |
 | [**Sling TV**](https://www.sling.com/) | San Jose, United States | [`0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d`](https://explorer.gochain.io/addr/0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d) |
 | [**Warner BP**](https://warnerbusinesspark.ca/) | Toronto, Canada | [`0x48c67d87cd7d716ec044dbe33a0152557bf86062`](https://explorer.gochain.io/addr/0x48c67d87cd7d716ec044dbe33a0152557bf86062) |
