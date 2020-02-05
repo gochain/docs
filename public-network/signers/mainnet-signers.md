@@ -7,6 +7,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**Aquatica Submarines**](https://aquaticasubmarines.com/) | Sydney, Australia | [`0x03771ec9c739c2767be58256def7564678985c78`](https://explorer.gochain.io/addr/0x03771ec9c739c2767be58256def7564678985c78) |
 | [**BluNomad**](https://blunomad.org/) | Montreal, Canada | [`0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38`](https://explorer.gochain.io/addr/0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38) |
 | [**Cloud Carib**](https://www.cloudcarib.com/) | Nassau, Bahamas | [`0xe1200caf0d92018fe111943faf91a0c5f6db34d1`](https://explorer.gochain.io/addr/0xe1200caf0d92018fe111943faf91a0c5f6db34d1) |
+| [**Conservation International**](https://www.conservation.org/) | Virginia, United States | [`0xe1b3188081e9f195a8f14ba6507fc0d00b6a5bc6`](https://explorer.gochain.io/addr/0xe1b3188081e9f195a8f14ba6507fc0d00b6a5bc6) |
 | [**DISH Network**](https://www.dish.com/) | Ashburn, United States | [`0x01ce3a61cb52a10d55671dd5de5a0f578a5e07c1`](https://explorer.gochain.io/addr/0x01ce3a61cb52a10d55671dd5de5a0f578a5e07c1) |
 | [**Fins Attached**](https://www.finsattached.org/) | Bangalore, India | [`0x8846359af59b723ab4c540456251b9c3fe2f269d`](https://explorer.gochain.io/addr/0x8846359af59b723ab4c540456251b9c3fe2f269d) |
 | [**GoChain**](https://gochain.io)  | New York, United States | [`0xed7f2e81b0264177e0df8f275f97fd74fa51a896`](https://explorer.gochain.io/addr/0xed7f2e81b0264177e0df8f275f97fd74fa51a896) |
