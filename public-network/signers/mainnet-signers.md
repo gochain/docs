@@ -4,7 +4,6 @@ Below is a list of the current companies signing blocks on the GoChain network.
 
 | Name | Location| Signing Address |
 | --- | --------------- | --- |
-| [**Aquatica Submarines**](https://aquaticasubmarines.com/) | Sydney, Australia | [`0x03771ec9c739c2767be58256def7564678985c78`](https://explorer.gochain.io/addr/0x03771ec9c739c2767be58256def7564678985c78) |
 | [**BluNomad**](https://blunomad.org/) | Montreal, Canada | [`0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38`](https://explorer.gochain.io/addr/0x5DECF6d34b0A099d8a5B49A127FBcaae428c4b38) |
 | [**Cloud Carib**](https://www.cloudcarib.com/) | Nassau, Bahamas | [`0xe1200caf0d92018fe111943faf91a0c5f6db34d1`](https://explorer.gochain.io/addr/0xe1200caf0d92018fe111943faf91a0c5f6db34d1) |
 | [**Conservation International**](https://www.conservation.org/) | Virginia, United States | [`0xe1b3188081e9f195a8f14ba6507fc0d00b6a5bc6`](https://explorer.gochain.io/addr/0xe1b3188081e9f195a8f14ba6507fc0d00b6a5bc6) |
