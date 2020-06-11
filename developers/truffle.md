@@ -6,8 +6,8 @@ Below is an example `truffle-config.js` config file that uses GoChain. To use th
 
 ```sh
 npm install truffle-privatekey-provider
-# Set a private key to use that has some GO in its account
-export WEB3_PRIVATE_KEY=0xABCD...
+# Set a private key to use that has some GO in its account, do not include '0x' in the address
+export WEB3_PRIVATE_KEY=ABCD...
 ```
 
 Then you can use this:
