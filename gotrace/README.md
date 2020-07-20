@@ -43,7 +43,7 @@ curl "$GOTRACE_API/v1/orgs/$ORG_ID/assets" \
 ### GET Assets
 
 ```sh
-curl "$GOTRACE_API/v1/orgs/ORG_ID/assets" \
+curl "$GOTRACE_API/v1/orgs/$ORG_ID/assets" \
   -H 'Content-Type: application/json' \
   -H "Authorization:$API_TOKEN" \
 ```
@@ -103,7 +103,7 @@ curl "$GOTRACE_API/v1/assets/$ASSET_ID" \
 ### POST new Load
 
 ```sh
-curl "$GOTRACE_API/v1/orgs/ORG_ID/loads" \
+curl "$GOTRACE_API/v1/orgs/$ORG_ID/loads" \
   -H 'Content-Type: application/json' \
   -H "Authorization:$API_TOKEN" \
   --data-binary '{"name":"LOAD_NAME","org_id":"ORG_ID","parent_id":PARENT_ID,"asset":"ASSET_ID","source_load_ids":SOURCE_LOAD_IDS,"start_point":{"latitude":LATITUDE,"longitude":LONGITUDE}}'
@@ -145,7 +145,7 @@ curl "$GOTRACE_API/v1/orgs/ORG_ID/loads" \
 ### GET Loads
 
 ```sh
-curl "$GOTRACE_API/v1/orgs/ORG_ID/loads" \
+curl "$GOTRACE_API/v1/orgs/$ORG_ID/loads" \
   -H 'Content-Type: application/json' \
   -H "Authorization:$API_TOKEN" \
 ```
@@ -296,6 +296,56 @@ curl "$GOTRACE_API/v1/loads/$LOAD_ID" \
     "trace_is_public": false,
     "is_container": false,
     "last_committed_event_at": "2020-07-15T15:44:24.968239Z"
+  }
+}
+```
+</details>
+
+### POST Load Event
+
+#### Event Types
+
+- `created` (optional `source_load_ids` field available)
+- `gps-start`
+- `gps-track`
+- `gps-stop`
+- `accepted`
+- `added` (requires `parent_id` field)
+- `removed`
+
+```sh
+curl "$GOTRACE_API/v1/loads/$LOAD_ID/events" \
+  -H 'Content-Type: application/json' \
+  -H "Authorization:$API_TOKEN" \
+  --data-binary '{"load_id":"2gcjqFd5pEVNwNhhH9u9","created_by":"p8Ov0RnOO9U1fVRJoa5R8JHcOLm1","org_id":"UEk2tZFKAF1LmkfzgbyA","type":"gps-start","geo_point":{"latitude":41.8781,"longitude":-87.6298}}'
+```
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "event": {
+    "updated_at": "2020-07-20T07:53:17.847251591-05:00",
+    "created_at": "2020-07-20T07:53:16.481100112-05:00",
+    "id": "8pAbKFm28vv1LZ3cCqRO",
+    "created_by": "p8Ov0RnOO9U1fVRJoa5R8JHcOLm1",
+    "org_id": "UEk2tZFKAF1LmkfzgbyA",
+    "load_id": "2gcjqFd5pEVNwNhhH9u9",
+    "parent_id": "",
+    "source_load_ids": null,
+    "type": "gps-start",
+    "geo_point": {
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    },
+    "location_id": "5peH6IvKncoDZMVLEleK",
+    "verified_geo_point": {
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    },
+    "multihash": "QmUiPPL7AMWzKEwKNbCJn5ez4AFViwxEP9jRhFsUcq1jSv",
+    "tx_hash": "0x4974668742b70b99308dd02717696aa9f0cb22b58c76ee1f796022f3b425955f"
   }
 }
 ```
