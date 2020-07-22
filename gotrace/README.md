@@ -303,15 +303,6 @@ curl "$GOTRACE_API/v1/loads/$LOAD_ID" \
 
 ### POST Load Event
 
-#### Event Types
-
-- `created` (optional `source_load_ids` field available)
-- `gps-start`
-- `gps-track`
-- `gps-stop`
-- `accepted`
-- `added` (requires `parent_id` field)
-- `removed`
 
 ```sh
 curl "$GOTRACE_API/v1/loads/$LOAD_ID/events" \
@@ -350,6 +341,68 @@ curl "$GOTRACE_API/v1/loads/$LOAD_ID/events" \
 }
 ```
 </details>
+
+
+#### Event Types
+
+##### `created`
+
+Automatically generated when a new load is posted. 
+May include the optional fields `source_load_ids` and `fields`.
+
+##### `gps-start`
+
+Initiates a tracking session. User must 'own' the load.
+
+##### `gps-track`
+
+Logs a geo point. Must follow `gps-start` or `gps-track`.
+
+##### `gps-stop`
+
+Ends a tracking session. Must follow `gps-track` or `gps-start`.
+
+##### `accepted`
+
+Transfers a load to a new user.
+
+##### `added`
+
+Adds a load to a 'parent' container load. Requires `parent_id` field.
+
+##### `removed`
+
+Removes a load from the current 'parent' container load.
+
+##### `updated`
+
+Updates load fields. Requires `fields` field, which is treated as a set of fields to PATCH.
+Mutable fields include `name` (string) and `data` (object). Rather than setting `data` as a whole (which will overwrite),
+one or more individual fields can be updated using dot notation (`data.*`).  
+
+<details>   
+<summary>Example data</summary>
+
+```json
+{
+  "name": "new name",
+  "data": {"custom": "field"}
+}
+```
+</details>
+
+<details>
+<summary>Example data.*</summary>
+
+```json
+{
+  "name": "new name",
+  "data.custom": "field",
+  "data.custom2": "value"
+}
+```
+</details>
+
 
 ### GET Load Events by ID
 
