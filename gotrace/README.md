@@ -526,7 +526,7 @@ curl "$GOTRACE_API/v1/loads/$LOAD_ID/events" \
 ### GET Load by Paired Barcode data
 
 ```sh
-curl "$GOTRACE_API/v1/loads/$BARCODE" \
+curl "$GOTRACE_API/v1/loads/byBarcode/$BARCODE" \
   -H 'Content-Type: application/json' \
   -H "Authorization:$API_TOKEN"
 ```
