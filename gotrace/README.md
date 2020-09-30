@@ -152,20 +152,20 @@ curl "$GOTRACE_API/v1/orgs/$ORG_ID/loads" \
 
 #### Query Parameters
 
-- `latestOrg boolean`
-- `includeHidden boolean`
-- `createdAfter datetime`
-- `createdBefore datetime`
+- `latest_org boolean`
+- `include_hidden boolean`
+- `created_after datetime`
+- `created_before datetime`
 - `trace_is_public boolean`
-- `assetId string`
-- `locationId string`
-- `userId string`
+- `asset_id string`
+- `location_id string`
+- `user_id string`
 
-* `assetId`, `locationId`, and `userId` are exclusive with one another, though each may be included
+* `asset_id`, `location_id`, and `user_id` are exclusive with one another, though each may be included
 multiple times on their own (up to 10).
 
 ```sh
-curl "$GOTRACE_API/v1/orgs/0pFkVHqMtoQK5tB6EiC8/loads?latestOrg=true&includeHidden=true&createdAfter=2020-07-09T12%3A59%3A00.000Z&createdBefore=2020-07-17T12%3A59%3A00.000Z&assetId=a4yYiOqJYZqsAOlCrOnc&publicTraces=true" \
+curl "$GOTRACE_API/v1/orgs/0pFkVHqMtoQK5tB6EiC8/loads?latest_org=true&include_hidden=true&created_after=2020-07-09T12%3A59%3A00.000Z&created_before=2020-07-17T12%3A59%3A00.000Z&asset_id=a4yYiOqJYZqsAOlCrOnc&public_traces=true" \
   -H 'Content-Type: application/json' \
   -H "Authorization:$API_TOKEN" \
 ```
@@ -547,7 +547,7 @@ Example Response: see [GET Load by ID](#GET-Load-by-ID)
 ### GET Supply Graph
 
 ```sh
-curl "$GOTRACE_API/v1/loads/$LOAD_ID/supplyGraph" \
+curl "$GOTRACE_API/v1/loads/$LOAD_ID/supply_graph" \
   -H 'Content-Type: application/json' \
   -H "Authorization:$API_TOKEN"
 ```  
