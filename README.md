@@ -4,6 +4,12 @@
 
 Official GoChain documentation.
 
+## General Information about GoChain
+
+You can find general GoChain information and help on [wiki](https://github.com/gochain/docs/wiki). 
+
+If you have questions or want to discuss something, check out the [discussions section](https://github.com/gochain/docs/discussions). 
+
 ## Smart Contract / DApp Developers
 
 If you are developing smart contracts or dapps to deploy to GoChain, you'll find the information you need here.
