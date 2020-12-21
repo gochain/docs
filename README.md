@@ -55,9 +55,7 @@ GoChain is highly optimized for private blockchain networks and has been battle 
 
 Learn how to [setup your own GoChain network here](private-networks).
 
-## For More Information
+## Questions?
 
-See our help desk site for more information and if you don't find it there, you can ask us directly on the help site.
-
-[Help Desk](https://help.gochain.io)
+Post your questions here: https://github.com/gochain/docs/discussions
 
