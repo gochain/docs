@@ -19,6 +19,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**Lenovo**](https://www.lenovo.com/) | Whittier, United States | [`0x201631d58922ebdd1493dcfb0bedfb92a9e5b423`](https://explorer.gochain.io/addr/0x201631d58922ebdd1493dcfb0bedfb92a9e5b423) |
 | [**Pennsylvania State University**](https://www.psu.edu/) | Virginia, United States | [`0x3ee97b03049c6c9dad71cf073dc2dd9bf8fcf329`](https://explorer.gochain.io/addr/0x3ee97b03049c6c9dad71cf073dc2dd9bf8fcf329) |
 | [**Procurious**](https://www.procurious.com/) | Netherlands | [`0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea`](https://explorer.gochain.io/addr/0xdd9ce1d9d548d0c5ac333a1b2d2042281886c5ea) |
+| [**RMIT University**](https://rmitblockchain.io/) | Melbourne, Australia | [`0x1e2e7ad952f62f989a8709ad30e7313183068e64`](https://explorer.gochain.io/addr/0x1e2e7ad952f62f989a8709ad30e7313183068e64) |
 | [**Sling TV**](https://www.sling.com/) | San Jose, United States | [`0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d`](https://explorer.gochain.io/addr/0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d) |
 | [**University of Nicosia**](https://www.unic.ac.cy/iff/) | Nicosia, Cyprus | [`0x248f557b028e2040c7b3f555f35cd1e8df07ac6d`](https://explorer.gochain.io/addr/0x248f557b028e2040c7b3f555f35cd1e8df07ac6d) |
 | [**Warner BP**](https://warnerbusinesspark.ca/) | Toronto, Canada | [`0x48c67d87cd7d716ec044dbe33a0152557bf86062`](https://explorer.gochain.io/addr/0x48c67d87cd7d716ec044dbe33a0152557bf86062) |
