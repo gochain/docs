@@ -36,6 +36,8 @@ You'll need a machine with the following specifications or greater:
 * SSD drives with at least 200GB of space
 * Network - any modern data center/cloud provider should have sufficient network bandwidth
 
+[How to setup a node](https://github.com/gochain/docs/tree/master/public-network/signers/nodes#readme)
+
 ## Testnet QA
 
 Before you will be accepted into the mainnet, you must be able to run a node on our testnet
