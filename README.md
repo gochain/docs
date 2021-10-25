@@ -25,6 +25,7 @@ Since GoChain is 100% Ethereum compatible, all the Ethereum developer tools will
 * [How to deploy to Gochain using Remix](https://medium.com/gochain/how-to-deploy-a-smart-contract-to-gochain-40de78d4d85a)
 * [How to deploy to GoChain using Visual Studio Code and the GoChain Wallet](https://medium.com/gochain/how-to-deploy-a-smart-contract-in-5-minutes-bed2443be23c)
 * [Learn why GoChain fees are 7500x cheaper than Ethereum](https://medium.com/gochain/gochain-transaction-fees-are-at-least-7500x-less-than-ethereum-3b7060743717)
+* [Wrapped GO contract](https://github.com/gochain/wgo)
 
 ## Public Network
 
