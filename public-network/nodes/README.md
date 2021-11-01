@@ -42,7 +42,7 @@ docker-compose --version
 2. (Optional) Create a file `.env` to override the default variables: (see [`example.env`](example.env) for more details)
 ```
 GOCHAIN_TAG=2.1.16
-GOCHAIN_CACHE=2048
+GOCHAIN_CACHE=16000
 ```
 3. Launch `docker-compose`
 
