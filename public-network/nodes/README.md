@@ -44,13 +44,14 @@ docker-compose --version
 GOCHAIN_TAG=2.1.16
 GOCHAIN_CACHE=16000
 ```
-3. Launch `docker-compose`
+3. [Configure Linux limits](https://github.com/gochain/gochain/discussions/443)
+4. Launch `docker-compose`
 
 ```sh
 docker-compose up -d
 ```
 
-4. Make sure that node works.
+5. Make sure the node works.
 
 ```sh
 docker logs -f node
