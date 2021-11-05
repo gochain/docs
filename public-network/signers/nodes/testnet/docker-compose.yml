@@ -8,5 +8,5 @@ services:
       - "30303:30303/udp"
     volumes:
       - .:/gochain
-    command: gochain --testnet --config /gochain/config.toml --datadir /gochain/node --cache ${GOCHAIN_CACHE:-4096} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt --netstats ${NETSTATS_NAME}:${NETSTATS_SECRET}@testnet-stats.gochain.io --miner.extradata ${GOCHAIN_EXTRADATA}
+    command: gochain --testnet --config /gochain/config.toml --datadir /gochain/node --cache ${GOCHAIN_CACHE:-16000} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt --netstats ${NETSTATS_NAME}:${NETSTATS_SECRET}@testnet-stats.gochain.io --miner.extradata ${GOCHAIN_EXTRADATA}
     restart: always
