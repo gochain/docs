@@ -18,6 +18,7 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**Dian Fossey Gorilla Fund**](https://gorillafund.org/) | Rwanda, Africa | [`0x7eBcD830e05Ef0E0a96e81eaF5d52E7c79c364f8`](https://explorer.gochain.io/addr/0x7eBcD830e05Ef0E0a96e81eaF5d52E7c79c364f8) |
 | [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [`0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5`](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
 | [**Lenovo**](https://www.lenovo.com/) | Whittier, United States | [`0x201631d58922ebdd1493dcfb0bedfb92a9e5b423`](https://explorer.gochain.io/addr/0x201631d58922ebdd1493dcfb0bedfb92a9e5b423) |
+| [**National Livestock Producers**](https://nlpa.org) | Colorado, United States | [`0xd3bf86f3202ad5ea2e52ddd521e28a351f58af8b`](https://explorer.gochain.io/addr/0xd3bf86f3202ad5ea2e52ddd521e28a351f58af8b) |
 | [**Pennsylvania State University**](https://www.psu.edu/) | Virginia, United States | [`0x3ee97b03049c6c9dad71cf073dc2dd9bf8fcf329`](https://explorer.gochain.io/addr/0x3ee97b03049c6c9dad71cf073dc2dd9bf8fcf329) |
 | [**RMIT University**](https://rmitblockchain.io/) | Melbourne, Australia | [`0x1e2e7ad952f62f989a8709ad30e7313183068e64`](https://explorer.gochain.io/addr/0x1e2e7ad952f62f989a8709ad30e7313183068e64) |
 | [**Sling TV**](https://www.sling.com/) | San Jose, United States | [`0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d`](https://explorer.gochain.io/addr/0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d) |
