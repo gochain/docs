@@ -67,5 +67,5 @@ Learn how to [setup your own GoChain network here](private-networks).
 
 ## Questions?
 
-Post your questions here: https://github.com/gochain/docs/discussions
+Post your questions here: https://github.com/gochain/docs/discussions.
 
