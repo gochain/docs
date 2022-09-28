@@ -24,5 +24,6 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**Sling TV**](https://www.sling.com/) | San Jose, United States | [`0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d`](https://explorer.gochain.io/addr/0x2a823a79b21f04fad5f349d5ca3fed8caaf99c0d) |
 | [**University of Nicosia**](https://www.unic.ac.cy/iff/) | Nicosia, Cyprus | [`0x248f557b028e2040c7b3f555f35cd1e8df07ac6d`](https://explorer.gochain.io/addr/0x248f557b028e2040c7b3f555f35cd1e8df07ac6d) |
 | [**Warner BP**](https://warnerbusinesspark.ca/) | Toronto, Canada | [`0x48c67d87cd7d716ec044dbe33a0152557bf86062`](https://explorer.gochain.io/addr/0x48c67d87cd7d716ec044dbe33a0152557bf86062) |
+| [**The Detox Project**](https://detoxproject.org/) | London, UK | [`0x1b6844395f0292b40f0754374407e0734d39b573`](https://explorer.gochain.io/addr/0x1b6844395f0292b40f0754374407e0734d39b573) |
 
 [More information](https://github.com/gochain/docs/wiki/authoritative-nodes)
