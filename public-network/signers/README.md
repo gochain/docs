@@ -29,20 +29,14 @@ Submit your application via this form: https://goo.gl/forms/1a69Jo6zAvl5fDJ33
 
 ## Recommended System Requirements
 
-You'll need a machine with the following specifications or greater:
+We recommend the following specifications or greater:
 
-* 32GB RAM
+* 16GB RAM minimum - 32GB RAM recommended
 * CPU - typically, a 32GB machine will have enough CPU to handle it
 * SSD drives with at least 200GB of space
 * Network - any modern data center/cloud provider should have sufficient network bandwidth
 
 [How to setup a node](https://github.com/gochain/docs/tree/master/public-network/signers/nodes#readme)
-
-## Testnet QA
-
-Before you will be accepted into the mainnet, you must be able to run a node on our testnet
-under heavy load for at least a week. You will be added as a signer to the testnet and a week long
-load test will run to ensure you are capable of operating and maintaining your node.
 
 ## Ongoing Governance
 
