@@ -16,7 +16,6 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**Goldbell**](https://www.gbfs.com.sg/) | Singapore | [`0xfd20826027b265ea775509e5ca0330692fa41733`](https://explorer.gochain.io/addr/0xfd20826027b265ea775509e5ca0330692fa41733) |
 | [**GoPath**](https://gopath.io) | New York, United States | [`0xf7678aa7f42bc017f3d6011ca27aed400647960d`](https://explorer.gochain.io/addr/0xf7678aa7f42bc017f3d6011ca27aed400647960d) |
 | [**Dian Fossey Gorilla Fund**](https://gorillafund.org/) | Rwanda, Africa | [`0x7eBcD830e05Ef0E0a96e81eaF5d52E7c79c364f8`](https://explorer.gochain.io/addr/0x7eBcD830e05Ef0E0a96e81eaF5d52E7c79c364f8) |
-| [**KuCoin**](https://kucoin.com) | Tokyo, Japan | [`0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5`](https://explorer.gochain.io/addr/0x1ee4baf2cccc633b8e2c06a3ac20319610cf3cd5) |
 | [**Lenovo**](https://www.lenovo.com/) | Whittier, United States | [`0x201631d58922ebdd1493dcfb0bedfb92a9e5b423`](https://explorer.gochain.io/addr/0x201631d58922ebdd1493dcfb0bedfb92a9e5b423) |
 | [**National Livestock Producers**](https://nlpa.org) | Colorado, United States | [`0xd3bf86f3202ad5ea2e52ddd521e28a351f58af8b`](https://explorer.gochain.io/addr/0xd3bf86f3202ad5ea2e52ddd521e28a351f58af8b) |
 | [**Pennsylvania State University**](https://www.psu.edu/) | Virginia, United States | [`0x3ee97b03049c6c9dad71cf073dc2dd9bf8fcf329`](https://explorer.gochain.io/addr/0x3ee97b03049c6c9dad71cf073dc2dd9bf8fcf329) |
