@@ -2,7 +2,7 @@ version: "3"
 services:
   node:
     container_name: node
-    image: gcr.io/gochain-core/gochain:${GOCHAIN_IMAGE:-latest}
+    image: ghcr.io/gochain/gochain:${GOCHAIN_IMAGE:-latest}
     ports:
       # Netstats
       - "80:80"

@@ -48,7 +48,7 @@ A complete configuration looks like:
 3. Create an account for reward activities. Note the logged address.
 
 ```sh
-docker run --rm -v $PWD:/root gcr.io/gochain-core/gochain gochain --datadir /root/node --password /root/password.txt account new
+docker run --rm -v $PWD:/root ghcr.io/gochain/gochain gochain --datadir /root/node --password /root/password.txt account new
 ```
 
 4. **Backup the `node/keystore` directory you just created! If you lose it, you will lose all of your rewards!**

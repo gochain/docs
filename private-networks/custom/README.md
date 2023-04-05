@@ -18,7 +18,7 @@ You may start with a single voter/signer node and [add more later](adding-more-n
 3. Create an account. Note the logged address:
 
 ```sh
-docker run --rm -v $PWD:/root gcr.io/gochain-core/gochain gochain --datadir /root/node --password /root/password.txt account new
+docker run --rm -v $PWD:/root ghcr.io/gochain/gochain gochain --datadir /root/node --password /root/password.txt account new
 ```
 
 4. Create any initial allocation accounts. You may want to create separate accounts to hold some initial allocations.
@@ -50,7 +50,7 @@ voters (Only one required, can vote more in later); the gas limit can be set now
 
 First you must initialize from the `genesis.json` file:
 ```sh
-docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node init genesis.json
+docker run --rm -it -v $PWD:/gochain -w /gochain ghcr.io/gochain/gochain gochain --datadir /gochain/node init genesis.json
 ```
 Then you can run normally with `docker-compose`:
 ```sh
@@ -70,12 +70,12 @@ docker logs -f node
 Additional nodes can be run in the same manner. Nodes can be connected to one another by attaching to the console and executing
 `admin.addPeer(<enode>)`. For example: 
 ```sh
-docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node attach
+docker run --rm -it -v $PWD:/gochain -w /gochain ghcr.io/gochain/gochain gochain --datadir /gochain/node attach
 > admin.addPeer('enode://dd72567042f67053e04ccaed6a0bb335a3694a19da44547bce9040e76c2adfcdf6c729181c3700d7de927bf1444d25c91359e3536eeb5a945b00d2efb5739c9a@159.65.169.181:30303')
 ```
 If nodes intend to sign and/or vote, and they were not included in the genesis file, then they can be voted in via the console, using the `clique` api:
 ```sh
-docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node attach
+docker run --rm -it -v $PWD:/gochain -w /gochain ghcr.io/gochain/gochain gochain --datadir /gochain/node attach
 > clique
 {
   proposals: {},

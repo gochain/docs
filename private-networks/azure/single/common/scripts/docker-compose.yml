@@ -2,7 +2,7 @@ version: "3"
 services:
   node:
     container_name: node
-    image: gcr.io/gochain-core/gochain
+    image: ghcr.io/gochain/gochain
     ports:
       - "30303:30303"
       - "8545:8545"

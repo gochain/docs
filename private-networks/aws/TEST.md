@@ -31,7 +31,7 @@ You should see initial balance that you set in wizard:
 
 6. Launch the interactive gochain console
 
-```sudo docker run --rm -it -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node attach```
+```sudo docker run --rm -it -v $PWD:/gochain -w /gochain ghcr.io/gochain/gochain gochain --datadir /gochain/node attach```
 
 7. Check the balance of the genesis account
 

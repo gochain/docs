@@ -135,7 +135,7 @@ Resources:
               - "date +%s | sha256sum | base64 | head -c 32 > password.txt"
               - "curl -L https://raw.githubusercontent.com/gochain-io/docs/master/private-networks/aws/genesis.json -o $HOMEDIR/genesis.json"
               - "curl -L https://raw.githubusercontent.com/gochain-io/docs/master/private-networks/aws/docker-compose.yml -o $HOMEDIR/docker-compose.yml"
-              - "export ACCOUNT_ID=$(sudo docker run -v $PWD:/root gcr.io/gochain-core/gochain gochain --datadir /root/node --password /root/password.txt account new | awk -F '[{}]' '{print $2}')"
+              - "export ACCOUNT_ID=$(sudo docker run -v $PWD:/root ghcr.io/gochain/gochain gochain --datadir /root/node --password /root/password.txt account new | awk -F '[{}]' '{print $2}')"
               - "echo \"GOCHAIN_ACCT=0x$ACCOUNT_ID\" > $HOMEDIR/.env"
               - "echo \"GOCHAIN_NETWORK=$NETWORK_ID\" >> $HOMEDIR/.env"
               - "sed -i \"s/<network_id>/$NETWORK_ID/\" $HOMEDIR/genesis.json"
@@ -145,7 +145,7 @@ Resources:
               - "sed -i \"s/<address>/$ACCOUNT_ID/\" $HOMEDIR/genesis.json"
               - "sed -i \"s/<hex>/$INITIAL_BALANCE_HEX/\" $HOMEDIR/genesis.json"
               - "sudo sudo rm -rf $PWD/node/GoChain"
-              - "sudo docker run --rm -v $PWD:/gochain -w /gochain gcr.io/gochain-core/gochain gochain --datadir /gochain/node init genesis.json"
+              - "sudo docker run --rm -v $PWD:/gochain -w /gochain ghcr.io/gochain/gochain gochain --datadir /gochain/node init genesis.json"
               - "sudo docker-compose up -d"              
       Volumes:
         - Device: "xvdh"
