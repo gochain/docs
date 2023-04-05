@@ -37,16 +37,11 @@ The GoChain public network is the best performing web3/Ethereum compatible block
 
 Give it a try for yourself to experience the difference.
 
-## Testnet
-
-[Testnet info](https://github.com/gochain/docs/wiki/testnet)
-
 ### Network RPC URLs
 
 When interacting with GoChain, the easiest way is to use our hosted JSON-RPC API's. The base URLs
 are:
 
-* GoChain TestNet - https://testnet-rpc.gochain.io
 * GoChain MainNet - https://rpc.gochain.io
 
 ### Running a Public Network Node
