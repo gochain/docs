@@ -25,5 +25,6 @@ Below is a list of the current companies signing blocks on the GoChain network.
 | [**Warner BP**](https://warnerbusinesspark.ca/) | Toronto, Canada | [`0x48c67d87cd7d716ec044dbe33a0152557bf86062`](https://explorer.gochain.io/addr/0x48c67d87cd7d716ec044dbe33a0152557bf86062) |
 | [**The Detox Project**](https://detoxproject.org/) | London, UK | [`0x1b6844395f0292b40f0754374407e0734d39b573`](https://explorer.gochain.io/addr/0x1b6844395f0292b40f0754374407e0734d39b573) |
 | [**Upbring**](https://upbring.org/) | Texas, United States | [`0x0c98C91ec8272196Ea4C7D6bF74706b4275c75B0`](https://explorer.gochain.io/addr/0x0c98C91ec8272196Ea4C7D6bF74706b4275c75B0) |
+| [**Wakefield BioChar**](https://wakefieldbiochar.com/) | S.Carolina, United States | [`0x326e898Eb2963418874cbc7ABba34f79D5e66323`](https://explorer.gochain.io/addr/0x326e898Eb2963418874cbc7ABba34f79D5e66323) |
 
 [More information](https://github.com/gochain/docs/wiki/authoritative-nodes)
