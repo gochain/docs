@@ -6,29 +6,7 @@ This directory contains instructions for configuring and running an authorized s
 
 Install `docker` and `docker-compose`.
 
-* Docker > 18.0 ([install](https://docs.docker.com/install/))
-* Docker-compose ([install](https://docs.docker.com/compose/install/))
-
-<details>
-  <summary>Simple Install Instructions</summary>
-
-Docker:
-
-```sh
-sudo rm /var/lib/apt/lists/*
-sudo apt-get update
-curl -fsSL https://get.docker.com/ | sudo sh
-docker info
-```
-
-Docker Compose:
-
-```sh
-curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-docker-compose --version
-```
-</details>
+* Docker > 25.0 ([install](https://docs.docker.com/install/))
 
 ## Initial Configuration
 
@@ -59,14 +37,14 @@ GOCHAIN_EXTRADATA="My Company Name" # Each signed block will have this permanent
 NETSTATS_NAME="My Company Name" # Display for netstats web interface.
 NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
 ```
-6. Launch `docker-compose`
+6. Launch `docker compose`
 
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 7. Make sure that node works. Note the `enode` address logged on startup. 
-(The `enode` can also be retrieved by attaching to the console and executing `admin.nodeInfo.enode`)
+(The `enode` can also be retrieved by [attaching to the console](https://github.com/orgs/gochain/discussions/154) and executing `admin.nodeInfo.enode`)
 
 ```sh
 docker logs -f node
