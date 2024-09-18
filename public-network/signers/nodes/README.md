@@ -12,7 +12,10 @@ Install `docker` and `docker-compose`.
 
 \**Note: If you are moving from the testnet to the mainnet, it is best to start fresh in a new folder.*
 
+Create a `/gochain` directory on the root of your machine.
+
 A complete configuration looks like:
+
 ```
 |-config.toml
 |-docker-compose.yml
