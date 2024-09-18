@@ -6,7 +6,7 @@ This directory contains instructions for configuring and running an authorized s
 
 Install `docker` and `docker-compose`.
 
-* Docker > 25.0 ([install](https://docs.docker.com/install/))
+* Docker > 25.0 ([install](https://docs.docker.com/engine/install/))
 
 ## Initial Configuration
 
