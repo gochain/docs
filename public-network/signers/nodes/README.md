@@ -8,6 +8,13 @@ Install `docker` and `docker-compose`.
 
 * Docker > 25.0 ([install](https://docs.docker.com/engine/install/))
 
+Quick Docker install:
+
+```sh
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
 ## Initial Configuration
 
 \**Note: If you are moving from the testnet to the mainnet, it is best to start fresh in a new folder.*
