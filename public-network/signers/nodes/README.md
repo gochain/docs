@@ -4,6 +4,26 @@ This directory contains instructions for configuring and running an authorized s
 
 ## Prerequisites
 
+Update a few Linux settings to ensure things run smoothly.
+
+Update `vm.max_map_count`:
+
+```sh
+sysctl -w vm.max_map_count=262144
+nano /etc/sysctl.conf
+# Add the following line:
+vm.max_map_count = 262144
+```
+
+Then increase the ulimit for the root user (assuming you are using root to run docker). Check current setting with `ulimit -n`, if it's a lot higher than 1024, you're good. If not, do this:
+
+```sh
+ulimit -n 100000
+nano /etc/security/limits.conf
+# Add the following line to it:
+root             soft    nofile          100000
+```
+
 Install `docker` and `docker-compose`.
 
 * Docker > 25.0 ([install](https://docs.docker.com/engine/install/))
