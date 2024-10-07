@@ -66,6 +66,7 @@ GOCHAIN_ACCT=0x12345 # Use the address from step 3.
 GOCHAIN_EXTRADATA="My Company Name" # Each signed block will have this permanently included.
 NETSTATS_NAME="My Company Name" # Display for netstats web interface.
 NETSTATS_SECRET=secret # Ask the GoChain team for this secret.
+# GOCHAIN_CACHE=16000 # Change this depending on your server's available memory.
 ```
 6. Launch `docker compose`
 
