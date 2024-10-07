@@ -1,38 +1,41 @@
 # Running a Node
 
-**IMPORTANT**: Please [sign up for this mailing list](https://groups.google.com/a/gochain.io/forum/#!forum/node-announcements) to get critical announcements that will require you to upgrade your node. These emails will be rare so you won't have to worry about getting too much email.
-
 This directory contains instructions for configuring and running GoChain with `docker-compose` on the `testnet`, `mainnet`, a private network, or a local development instance.
 
 Instructions for running a *signing* node are [here](../signers/nodes).
 
 ## Prerequisites
 
+Update a few Linux settings to ensure things run smoothly.
+
+Update `vm.max_map_count`:
+
+```sh
+sysctl -w vm.max_map_count=262144
+nano /etc/sysctl.conf
+# Add the following line:
+vm.max_map_count = 262144
+```
+
+Then increase the ulimit for the root user (assuming you are using root to run docker). Check current setting with `ulimit -n`, if it's a lot higher than 1024, you're good. If not, do this:
+
+```sh
+ulimit -n 100000
+nano /etc/security/limits.conf
+# Add the following line to it:
+root             soft    nofile          100000
+```
+
 Install `docker` and `docker-compose`.
 
-* Docker > 18.0 ([install](https://docs.docker.com/install/))
-* Docker-compose ([install](https://docs.docker.com/compose/install/))
+* Docker > 25.0 ([install](https://docs.docker.com/engine/install/))
 
-<details>
-  <summary>Simple Install Instructions</summary>
-
-Docker:
+Quick Docker install:
 
 ```sh
-sudo rm /var/lib/apt/lists/*
-sudo apt-get update
-curl -fsSL https://get.docker.com/ | sudo sh
-docker info
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 ```
-
-Docker Compose:
-
-```sh
-curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-docker-compose --version
-```
-</details>
 
 ## Initial Configuration
 
