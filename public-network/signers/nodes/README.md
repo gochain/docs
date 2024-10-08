@@ -4,6 +4,18 @@ This directory contains instructions for configuring and running an authorized s
 
 ## Prerequisites
 
+### Quick Start
+
+We have a quick start script here that will do all of the prerequisites below in one shot:
+
+```sh
+wget https://raw.githubusercontent.com/gochain/docs/refs/heads/master/public-network/signers/nodes/setup.sh
+chmod a+x setup.sh
+./setup.sh
+```
+
+### Manual configuration
+
 Update a few Linux settings to ensure things run smoothly.
 
 Update `vm.max_map_count`:
