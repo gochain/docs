@@ -10,3 +10,8 @@ services:
       - .:/gochain
     command: gochain --config /gochain/config.toml --datadir /gochain/node --cache ${GOCHAIN_CACHE:-16000} --rpc --mine --unlock ${GOCHAIN_ACCT} --password /gochain/password.txt --netstats "${NETSTATS_NAME}":${NETSTATS_SECRET}@stats.gochain.io --miner.extradata "${GOCHAIN_EXTRADATA}"
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 3
+        max-size: 512m
