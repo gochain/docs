@@ -9,3 +9,8 @@ services:
       - .:/gochain
     command: gochain --datadir /gochain/node --cache ${GOCHAIN_CACHE:-16000} --rpc
     restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 3
+        max-size: 512m
