@@ -13,9 +13,11 @@ wget https://raw.githubusercontent.com/gochain/docs/refs/heads/master/public-net
 chmod a+x setup.sh
 ./setup.sh
 ```
-
 ### Manual configuration
 
+<details>
+<summary>Open for manual instructions</summary>
+  
 Update a few Linux settings to ensure things run smoothly.
 
 Update `vm.max_map_count`:
@@ -46,6 +48,7 @@ Quick Docker install:
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
+</details>
 
 ## Initial Configuration
 
