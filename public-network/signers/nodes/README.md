@@ -96,8 +96,7 @@ docker compose up -d
 docker logs -f node
 ```
 
-8. **Backup the `node/GoChain/nodekey` file!** - This determines your enode public key.
-9. Contact the GoChain team with your account address and enode (with IP address) to be added to the list of signers.
+8. Get [enode](https://github.com/orgs/gochain/discussions/160) to add to config.toml
 
 ## Common Commands
 
