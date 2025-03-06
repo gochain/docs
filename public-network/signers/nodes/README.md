@@ -13,6 +13,9 @@ wget https://raw.githubusercontent.com/gochain/docs/refs/heads/master/public-net
 chmod a+x setup.sh
 ./setup.sh
 ```
+
+Then open a NEW terminal window to use the new settings. 
+
 ### Manual configuration
 
 <details>
