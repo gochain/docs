@@ -53,6 +53,8 @@ sudo sh get-docker.sh
 ```
 </details>
 
+Open a new terminal just to be sure all the settings kick in. 
+
 ## Initial Configuration
 
 \**Note: If you are moving from the testnet to the mainnet, it is best to start fresh in a new folder.*
@@ -96,7 +98,7 @@ docker compose up -d
 (The `enode` can also be retrieved by [attaching to the console](https://github.com/orgs/gochain/discussions/154) and executing `admin.nodeInfo.enode`)
 
 ```sh
-docker logs -f node
+docker logs -f --tail 50 node
 ```
 
 8. Get [enode](https://github.com/orgs/gochain/discussions/160) to add to config.toml
